@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(BaseWeaponSO))]
-public class BaseWeaponSOEditor : Editor {
+[CustomEditor(typeof(MultiShotsSO))]
+public class MultiShotSOEditor : Editor {
     public override void OnInspectorGUI() {
         DrawBaseClas();
+        
+        GUILayout.Space(4);
+        DrawMultishotClass();
     }
 
     /// <summary>
@@ -51,4 +53,19 @@ public class BaseWeaponSOEditor : Editor {
             serializedObject.ApplyModifiedProperties();
         }
     }
+    
+    /// <summary>
+    /// Draw the burst class variables
+    /// </summary>
+    private void DrawMultishotClass() {
+        using (new GUILayout.VerticalScope(EditorStyles.helpBox)) {
+            GUI.skin.label.fontSize = 10;
+            GUILayout.Label("MultiShot Data :");
+            GUI.skin.label.fontSize = 12;
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("moveSpawnShot"));
+            GUILayout.Space(2);
+        }
+        serializedObject.ApplyModifiedProperties();
+    }
+    
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(BurstWeaponSO))]
 public class BusrtWeaponSOEditor : Editor
 {

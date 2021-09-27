@@ -11,6 +11,56 @@ public class BurstWeaponSO : BaseWeaponSO {
     [SerializeField] private bool randomShot = false;
     [SerializeField] private int nmbBulletPerShot = 1;
     
+    #region GameplayFunction
+    /// <summary>
+    /// Get the rotation based on the angle
+    /// </summary>
+    /// <param name="burstAngle"></param>
+    /// <param name="line"></param>
+    /// <returns></returns>
+    private static Vector3 GetRotationAngle(float angle, Vector3 line, float distance) {
+        Vector3 rotationVector = (Quaternion.Euler(0, angle, 0) * line) * distance;
+        return rotationVector;
+    }
+
+    /// <summary>
+    /// Get a random Direction
+    /// </summary>
+    /// <param name="player"></param>
+    /// <returns></returns>
+    private Vector3 GetRandomDirection(GameObject player) {
+        float randomAngle = Random.Range(-burstAngle, burstAngle);
+        Vector3 rotationDirection = GetRotationAngle(randomAngle, player.transform.forward, 1);
+        return rotationDirection;
+    }
+
+    /// <summary>
+    /// Override the shoot function
+    /// </summary>
+    /// <param name="player"></param>
+    /// <param name="bulletSpawn"></param>
+    /// <param name="bulletContainer"></param>
+    public override void ShootBullet(GameObject player, Transform bulletSpawn, Transform bulletContainer) {
+        if (randomShot) {
+            Vector3 direction = GetRandomDirection(player);
+            GameObject bulletSpawned = Instantiate(BulletGam, bulletSpawn.position, player.transform.rotation, bulletContainer);
+            bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * BulletStartSpeed, ForceMode.Impulse);
+            Destroy(bulletSpawned, BulletDeathTime);
+        }
+        else {
+            float startAngle = -burstAngle;
+            float angleToAdd = (burstAngle * 2) / (nmbBulletPerShot - 1);
+            
+            for (int i = 0; i < nmbBulletPerShot; i++) {
+                Vector3 direction = GetRotationAngle(startAngle + (i * angleToAdd), player.transform.forward, 1);
+                GameObject bulletSpawned = Instantiate(BulletGam, bulletSpawn.position, player.transform.rotation, bulletContainer);
+                bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * BulletStartSpeed, ForceMode.Impulse);
+                Destroy(bulletSpawned, BulletDeathTime);
+            }
+        }
+    }
+    #endregion GameplayFunction
+    
 #if UNITY_EDITOR
     /// <summary>
     /// Override the function which is called in the OnDrawGizmos
@@ -35,54 +85,4 @@ public class BurstWeaponSO : BaseWeaponSO {
         }
     }
 #endif
-    
-    #region GameplayFunction
-    /// <summary>
-    /// Get the rotation based on the angle
-    /// </summary>
-    /// <param name="burstAngle"></param>
-    /// <param name="line"></param>
-    /// <returns></returns>
-    private static Vector3 GetRotationAngle(float angle, Vector3 line, float distance) {
-        Vector3 rotationVector = (Quaternion.Euler(0, angle, 0) * line) * distance;
-        return rotationVector;
-    }
-
-    /// <summary>
-    /// Get a random Direction
-    /// </summary>
-    /// <param name="player"></param>
-    /// <returns></returns>
-    private Vector3 GetRandomDirection(GameObject player) {
-        float randomAngle = Random.Range(-burstAngle, burstAngle);
-        Vector3 rotationDirection = GetRotationAngle(randomAngle, player.transform.forward, 10);
-        return rotationDirection;
-    }
-
-    /// <summary>
-    /// Override the shoot function
-    /// </summary>
-    /// <param name="player"></param>
-    /// <param name="bulletSpawn"></param>
-    /// <param name="bulletContainer"></param>
-    public override void ShootBullet(GameObject player, Transform bulletSpawn, Transform bulletContainer) {
-        if (randomShot) {
-            Vector3 direction = GetRandomDirection(player);
-            GameObject bulletSpawned = Instantiate(BulletGam, bulletSpawn.position, player.transform.rotation, bulletContainer);
-            bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * BulletStartSpeed, ForceMode.Impulse);
-            Destroy(bulletSpawned, BulletDeathTime);
-        }
-        else {
-            float startAngle = -burstAngle;
-            float angleToAdd = (burstAngle * 2) / (nmbBulletPerShot - 1);
-            
-            for (int i = 0; i < nmbBulletPerShot; i++) {
-                Vector3 direction = GetRotationAngle(startAngle + (i * angleToAdd), player.transform.forward, 10);
-                GameObject bulletSpawned = Instantiate(BulletGam, bulletSpawn.position, player.transform.rotation, bulletContainer);
-                bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * BulletStartSpeed, ForceMode.Impulse);
-                Destroy(bulletSpawned, BulletDeathTime);
-            }
-        }
-    }
-    #endregion GameplayFunction
 }

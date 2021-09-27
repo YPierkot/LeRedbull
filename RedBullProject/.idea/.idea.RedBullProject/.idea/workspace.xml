@@ -22,7 +22,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/MultiShotSOEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/BaseWeaponSOEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Weapon/MultiShotsSO.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1yiWUgreHQEssFUN01RCllxzLbn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -71,7 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1632734910586</updated>
-      <workItem from="1632734913924" duration="16745000" />
+      <workItem from="1632734913924" duration="19575000" />
     </task>
     <servers />
   </component>
