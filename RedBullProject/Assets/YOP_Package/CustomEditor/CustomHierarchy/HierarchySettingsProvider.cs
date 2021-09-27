@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
 using CustomizeEditor.HierarchySO;
@@ -465,3 +466,4 @@ static class HierarchySettingsProvider
         return selectedGamContent;
     }
 }
+#endif
