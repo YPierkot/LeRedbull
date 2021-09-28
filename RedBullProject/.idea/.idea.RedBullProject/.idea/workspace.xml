@@ -12,7 +12,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/PhM-Script/EnnemyBulletPoolManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PhM-Script/Follower.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PhM-Script/DestroyStandingEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PhM-Script/BulletPoolBehavior.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ca496b8c93454b2f9b9924292c19379f13b800/bf/727719b7/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1yic7vd2WCUvBNkj1RvThccqZ8o" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -59,7 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1632737687655</updated>
       <workItem from="1632737693304" duration="23098000" />
-      <workItem from="1632814384673" duration="1443000" />
+      <workItem from="1632814384673" duration="13488000" />
     </task>
     <servers />
   </component>

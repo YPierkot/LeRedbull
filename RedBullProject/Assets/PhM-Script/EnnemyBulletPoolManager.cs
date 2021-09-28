@@ -103,6 +103,7 @@ public class EnnemyBulletPoolManager : MonoBehaviour
         if (poolDictionary.ContainsKey(bulletName))
         {
             poolDictionary[bulletName].Enqueue(poolObject);
+            poolObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             poolObject.SetActive(false);
         }
     }
