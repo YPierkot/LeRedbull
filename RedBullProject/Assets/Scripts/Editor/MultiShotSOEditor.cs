@@ -67,5 +67,4 @@ public class MultiShotSOEditor : Editor {
         }
         serializedObject.ApplyModifiedProperties();
     }
-    
 }

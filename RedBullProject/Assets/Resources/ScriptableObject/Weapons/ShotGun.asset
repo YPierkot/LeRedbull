@@ -18,6 +18,6 @@ MonoBehaviour:
   bulletStartSpeed: 20
   bulletGam: {fileID: 8072388550839433965, guid: ed87284b3215c2748be90e9a499288c5, type: 3}
   bulletDeathTime: 4
-  burstAngle: 25
+  burstAngle: 30
   randomShot: 0
-  nmbBulletPerShot: 10
+  nmbBulletPerShot: 9

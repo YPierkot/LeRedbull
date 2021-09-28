@@ -335,7 +335,7 @@ namespace  CustomizeEditor {
             List<Component> componentsList = new List<Component>(actualInstanceData.gam.GetComponents(typeof(Component)));
 
             Rect iconRect = new Rect() {
-                x = 220,
+                x = 270,
                 y = selectionRect.y - 1,
                 width = selectionRect.height + 2,
                 height = selectionRect.height + 2
