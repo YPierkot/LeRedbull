@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
+#if UNITY_EDITOR
 using System.Collections.Generic;
-using Static;
-using UnityEditor;
 using UnityEngine;
 
 namespace CustomizeEditor.HierarchySO {
@@ -95,9 +92,6 @@ namespace CustomizeEditor.HierarchySO {
         public bool UseSeparator => useSeparator;
 
         #endregion PublicVariables
-
-
-
-
     }
 }
+#endif
