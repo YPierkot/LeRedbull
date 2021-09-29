@@ -8,6 +8,9 @@ public class WeaponUiData : MonoBehaviour {
     #region Variables
     [SerializeField] private bool isActivAtStart = false;
     public bool IsActivAtStart => isActivAtStart;
+
+    [SerializeField] private BaseWeaponSO weapon = null;
+    public BaseWeaponSO Weapon => weapon;
     
     [Header("Weapon Data")] 
     [SerializeField] private Sprite lockSprite = null;

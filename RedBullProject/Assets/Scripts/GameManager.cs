@@ -25,12 +25,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool hasStartContract = false;
     [SerializeField] private WeaponUiData contractStart = null;
     [SerializeField] private List<WeaponUiData> contractGamList = new List<WeaponUiData>();
+
+    [SerializeField] private PlayerManager playerData = null;
     public List<WeaponUiData> ContractGamList => contractGamList;
 
     [SerializeField] private WeaponUiData actualStat = null;
     
     private void Start() {
         ChangeContractState(true);
+        ChangeWeapon(0);
     }
 
     private void Update() {
@@ -46,6 +49,27 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        ChangeWeapon();
+    }
+
+    /// <summary>
+    /// change the weapon
+    /// </summary>
+    private void ChangeWeapon(int id = -1) {
+        if (id != -1) {
+            actualStat = contractGamList[id];
+            return;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha1)&& contractGamList[0].IsActivAtStart) actualStat = contractGamList[0];
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && contractGamList[1].IsActivAtStart) actualStat = contractGamList[1];
+        else if (Input.GetKeyDown(KeyCode.Alpha3)&& contractGamList[2].IsActivAtStart) actualStat = contractGamList[2];
+        else if (Input.GetKeyDown(KeyCode.Alpha4)&& contractGamList[3].IsActivAtStart) actualStat = contractGamList[3];
+        else if (Input.GetKeyDown(KeyCode.Alpha5)&& contractGamList[4].IsActivAtStart) actualStat = contractGamList[4];
+        else if (Input.GetKeyDown(KeyCode.Alpha6)&& contractGamList[5].IsActivAtStart) actualStat = contractGamList[5];
+
+        playerData.ChangeActualWeapon(actualStat.Weapon);
     }
     
     #region Contract
@@ -100,5 +124,3 @@ public class GameManager : MonoBehaviour
     #endregion Contract
     
 }
-    
-
