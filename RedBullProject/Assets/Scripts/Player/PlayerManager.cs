@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour {
     [Header("Player Shoot")] [SerializeField]
     private BaseWeaponSO actualWeapon;
     [SerializeField] private Transform bulletContainer = null;
-    
+
     #region privateVariable
     //Rigidbody
     private Rigidbody playerRig = null;
@@ -43,7 +43,10 @@ public class PlayerManager : MonoBehaviour {
     private void Update() {
         GetInputs();
         actualFireRate += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && actualFireRate >= actualWeapon.FireRate) ShootBullet();
+        if (Input.GetKey(KeyCode.Space) && actualFireRate >= actualWeapon.FireRate)
+        {
+            ShootBullet();
+        }
     }
 
     /// <summary>
@@ -77,7 +80,8 @@ public class PlayerManager : MonoBehaviour {
     /// <summary>
     /// Shoot the bullet
     /// </summary>
-    private void ShootBullet() {
+    private  void ShootBullet() 
+    {
         actualFireRate = 0;
         actualWeapon.ShootBullet(playerGam, shootPos, bulletContainer);
     }

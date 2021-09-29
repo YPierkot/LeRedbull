@@ -26,7 +26,8 @@ public class BaseWeaponSO : ScriptableObject {
     /// <param name="player"></param>
     /// <param name="bulletSpawn"></param>
     /// <param name="bulletContainer"></param>
-    public virtual void ShootBullet(GameObject player, Transform bulletSpawn, Transform bulletContainer) {
+    public virtual void ShootBullet(GameObject player, Transform bulletSpawn, Transform bulletContainer) 
+    {
         GameObject bulletSpawned = Instantiate(BulletGam, bulletSpawn.position, player.transform.rotation, bulletContainer);
         bulletSpawned.GetComponent<Rigidbody>().AddForce(player.transform.forward * BulletStartSpeed, ForceMode.Impulse);
         Destroy(bulletSpawned, BulletDeathTime);

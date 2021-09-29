@@ -104,6 +104,7 @@ public class EnnemyBulletPoolManager : MonoBehaviour
         {
             poolDictionary[bulletName].Enqueue(poolObject);
             poolObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            poolObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             poolObject.SetActive(false);
         }
     }
