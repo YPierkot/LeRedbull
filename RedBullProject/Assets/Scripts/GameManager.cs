@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool hasStartContract = false;
     [SerializeField] private WeaponUiData contractStart = null;
     [SerializeField] private List<WeaponUiData> contractGamList = new List<WeaponUiData>();
+    public List<WeaponUiData> ContractGamList => contractGamList;
 
-    [SerializeField] private GameObject StatPanel = null;
     [SerializeField] private WeaponUiData actualStat = null;
     
     private void Start() {
@@ -36,6 +36,15 @@ public class GameManager : MonoBehaviour
     private void Update() {
         if (Input.GetKey(KeyCode.L)) {
             AddEnnemyKillToContract();
+        }
+
+        if (Input.GetKey(KeyCode.M)) {
+            foreach (WeaponUiData data in contractGamList) {
+                for (int i = 0; i < data.RessourceList.Count; i++) {
+                    Ressource ress = data.RessourceList[i];
+                    ress.GetComponent<Ressource>().ReduceDurability(1);
+                }
+            }
         }
     }
     
@@ -73,7 +82,7 @@ public class GameManager : MonoBehaviour
     /// Can start a new contract
     /// </summary>
     /// <returns></returns>
-    public bool CanStartContract() { return !hasStartContract; }
+    private bool CanStartContract() { return !hasStartContract; }
 
     /// <summary>
     /// Change the contract state for all the gameObject
@@ -82,7 +91,7 @@ public class GameManager : MonoBehaviour
     private void ChangeContractState(bool activ) {
         foreach (WeaponUiData contract in contractGamList) {
             if (!contract.IsActivAtStart) {
-                contract.gameObject.GetComponent<Animator>().SetBool("Activ", activ);
+                contract.IconAnim.SetBool("Activ", activ);
             }
             contract.ContractButton.enabled = activ;
         }
@@ -90,17 +99,6 @@ public class GameManager : MonoBehaviour
     
     #endregion Contract
     
-    #region PanelStat
-
-    public void ChangePanelStatState(WeaponUiData data) {
-        if(data != actualStat) StatPanel.SetActive(!StatPanel.activeSelf);
-        UpdtaStatPanel(data);
-    }
-
-    private void UpdtaStatPanel(WeaponUiData weaponUiData) {
-        
-    }
-    #endregion PanelStat
 }
     
 
