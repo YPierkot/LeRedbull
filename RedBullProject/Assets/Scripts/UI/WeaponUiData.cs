@@ -61,7 +61,8 @@ public class WeaponUiData : MonoBehaviour {
         upgradeText[3].text = "+" + bulletSizeUpgreadeNmb + "%";
         openStatButtonPanel.SetActive(isActivAtStart);
     }
-
+    
+#if UNITY_EDITOR    
     /// <summary>
     /// When variable change
     /// </summary>
@@ -72,7 +73,7 @@ public class WeaponUiData : MonoBehaviour {
         }
         UpdateSliderVisual();
     }
-
+#endif
     /// <summary>
     /// Update the slider visual
     /// </summary>
