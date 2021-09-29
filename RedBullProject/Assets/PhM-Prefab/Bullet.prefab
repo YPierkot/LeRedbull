@@ -91,7 +91,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743628096203570100}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 183e4eae800e3f94fa4d35085e20bb80, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -126,4 +126,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletName: 
-  waitForDestruction: 5
+  waitForDestruction: 10

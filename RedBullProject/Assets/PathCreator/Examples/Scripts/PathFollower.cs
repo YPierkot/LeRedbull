@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 namespace PathCreation.Examples
 {
@@ -30,9 +31,12 @@ namespace PathCreation.Examples
                 length = pathCreator.path.NewGetPointAtDistance(distanceTravelled, endOfPathInstruction).w;
             }
 
-            if (endOfPathInstruction == EndOfPathInstruction.Stop & distanceTravelled / length > 0.95f)
+            if (weapons != null)
             {
-                weapons.canActivate = true;
+                if (endOfPathInstruction == EndOfPathInstruction.Stop & distanceTravelled / length > 0.95f)
+                {
+                    weapons.canActivate = true;
+                }
             }
         }
 

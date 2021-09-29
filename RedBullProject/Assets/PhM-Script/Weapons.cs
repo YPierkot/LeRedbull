@@ -38,6 +38,9 @@ public class Weapons : MonoBehaviour
                         case ActionsEnum.FIRE_BURST:
                             StartCoroutine(FireBurst(actionClasses[i].fireBurst));
                             break;
+                        case ActionsEnum.RANDOM_FIRE:
+                            RandomFire(actionClasses[i].randomFire);
+                            break;
                         case ActionsEnum.FIRE_STRAIGHT:
                             FireStraight(actionClasses[i].fireStraight);
                             break;
@@ -57,7 +60,6 @@ public class Weapons : MonoBehaviour
         {
             for (int i = 0; i < fireBurst.burstBullets + 1; i++)
             {
-
                 var angle = -fireBurst.burstAngle +
                             (i * ((fireBurst.burstAngle * 2) / fireBurst.burstBullets));
 
@@ -67,11 +69,31 @@ public class Weapons : MonoBehaviour
 
                 GameObject bullet = EnnemyBulletPoolManager.instance.GetBullet("BurstBullet",
                     ennemyPrefab.transform.position, ennemyPrefab.transform.rotation);
+                bullet.transform.localScale = bullet.transform.localScale * (fireBurst.bulletSizeFactor + 1);
                 bullet.GetComponent<Rigidbody>().AddForce(rotation * fireBurst.burstSpeed, ForceMode.Impulse);
 
             }
             
             yield return new WaitForSeconds(fireBurst.timeBetweenShoot);
+        }
+    }
+
+    void RandomFire(RandomFire randomFire)
+    {
+        for (int i = 0; i < randomFire.bulletNumber; i++)
+        {
+            var angle = Random.Range(-randomFire.AngleRandom, randomFire.AngleRandom);
+            var shift = Random.Range(-randomFire.positionRandom, randomFire.positionRandom);
+            var breakou = Random.Range(-randomFire.speedRandom, randomFire.speedRandom);
+
+            var rotation = Quaternion.Euler(0, angle, 0) * ennemyPrefab.transform.forward;
+            var position = ennemyPrefab.transform.position + new Vector3(shift, 0, 0);
+            var finalSpeed = randomFire.bulletSpeed + breakou;
+
+            GameObject bullet =
+                EnnemyBulletPoolManager.instance.GetBullet("RandomBullet", position, ennemyPrefab.transform.rotation);
+            bullet.transform.localScale = bullet.transform.localScale * (randomFire.bulletSizeFactor + 1);
+            bullet.GetComponent<Rigidbody>().AddForce(rotation * finalSpeed, ForceMode.Impulse);
         }
     }
 
@@ -123,6 +145,7 @@ public class Weapons : MonoBehaviour
 public enum ActionsEnum
 {
     FIRE_BURST,
+    RANDOM_FIRE,
     FIRE_STRAIGHT,
     FIRE_CORNER,
 }
@@ -135,6 +158,7 @@ public class ActionClass
     public int frames;
     public ActionsEnum actionsEnum;
     public FireBurst fireBurst;
+    public RandomFire randomFire;
     public FireStraight fireStraight;
     public FireCorner fireCorner;
 }
@@ -148,6 +172,18 @@ public class FireBurst
     public int bulletNumber;
     public float timeBetweenShoot;
     public float burstRotation;
+    public float bulletSizeFactor;
+}
+
+[Serializable]
+public class RandomFire
+{
+    public int bulletNumber;
+    public float AngleRandom;
+    public float positionRandom;
+    public float speedRandom;
+    public float bulletSpeed;
+    public float bulletSizeFactor;
 }
 
 [Serializable]
