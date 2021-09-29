@@ -11,6 +11,11 @@ public class Ressource : MonoBehaviour
     [SerializeField] private Image durabilitySlider = null;
     [SerializeField] private WeaponUiData weaponBase = null;
 
+    /// <summary>
+    /// Initialize this ressource
+    /// </summary>
+    /// <param name="weaponUiData"></param>
+    /// <param name="id"></param>
     public void Init(WeaponUiData weaponUiData, int id) {
         weaponBase = weaponUiData;
         upgradeID = id;

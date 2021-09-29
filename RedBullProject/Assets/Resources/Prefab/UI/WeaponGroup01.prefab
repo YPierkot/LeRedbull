@@ -486,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActivAtStart: 1
+  weapon: {fileID: 0}
   lockSprite: {fileID: 21300000, guid: fc4878fade6e46a47a9ab5be88b0ae7a, type: 3}
   objectSprite: {fileID: 21300000, guid: 31892b45183260148a5054c77c403d13, type: 3}
   iconImage: {fileID: 4241008822369079101}
@@ -498,6 +499,7 @@ MonoBehaviour:
   contractSlider: {fileID: 9133414347591957979}
   activContractColor: {r: 1, g: 0.51841265, b: 0, a: 1}
   notActivContractColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
+  activWeaponColor: {r: 0, g: 0.6313726, b: 1, a: 1}
   openStatButtonPanel: {fileID: 5238114321861692740}
   statPanel: {fileID: 5797283819500390806}
   damageUpgradeNmb: 0

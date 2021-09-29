@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -32,6 +31,7 @@ public class WeaponUiData : MonoBehaviour {
     [SerializeField] private Image contractSlider = null;
     [SerializeField] private Color activContractColor = new Color();
     [SerializeField] private Color notActivContractColor = new Color();
+    [SerializeField] private Color activWeaponColor = new Color();
 
     [Header("Weapon Stat Upgrade")] [SerializeField]
     private GameObject openStatButtonPanel = null;
@@ -55,10 +55,10 @@ public class WeaponUiData : MonoBehaviour {
 
     private void Start() {
         StatPanel.SetActive(false);
-        upgradeText[0].text = "+" + damageUpgradeNmb + "%";
-        upgradeText[1].text = "+" + fireRateUpgradeNmb + "%";
-        upgradeText[2].text = "+" + bulletSpeedUpgradeNmb + "%";
-        upgradeText[3].text = "+" + bulletSizeUpgreadeNmb + "%";
+        upgradeText[0].text = "+" + damageUpgradeNmb * 10 + "%";
+        upgradeText[1].text = "+" + fireRateUpgradeNmb * 10 + "%";
+        upgradeText[2].text = "+" + bulletSpeedUpgradeNmb * 10 + "%";
+        upgradeText[3].text = "+" + bulletSizeUpgreadeNmb * 10 + "%";
         openStatButtonPanel.SetActive(isActivAtStart);
     }
     
@@ -74,6 +74,8 @@ public class WeaponUiData : MonoBehaviour {
         UpdateSliderVisual();
     }
 #endif
+    
+    #region Contract
     /// <summary>
     /// Update the slider visual
     /// </summary>
@@ -121,7 +123,9 @@ public class WeaponUiData : MonoBehaviour {
 
         StatPanel.SetActive(!StatPanel.activeSelf);
     }
+    #endregion Contract
 
+    #region Resource
     /// <summary>
     /// Create a Ressource in the right Panel
     /// </summary>
@@ -151,12 +155,13 @@ public class WeaponUiData : MonoBehaviour {
                 break;
         }
 
-        if (value >= 10) addRessourceBtn[upgradeID].interactable = false;
+        UpdateButtonRessource(GameManager.Instance.BasicRessourceNumber);
         
         GameObject ress = Instantiate(ressourceGam, upgradeRessContainer[upgradeID]);
         ress.GetComponent<Ressource>().Init(this, upgradeID);
-        upgradeText[upgradeID].text = "+" + value + "%";
+        upgradeText[upgradeID].text = "+" + value*10 + "%";
         ressourceList.Add(ress.GetComponent<Ressource>());
+        GameManager.Instance.UseRessource(1, true);
     }
 
     /// <summary>
@@ -186,8 +191,37 @@ public class WeaponUiData : MonoBehaviour {
                 value = bulletSizeUpgreadeNmb;
                 break;
         }
-        if(value < 10) addRessourceBtn[upgradeID].interactable = true;
-        upgradeText[upgradeID].text = "+" + value + "%";
+
+        UpdateButtonRessource(GameManager.Instance.BasicRessourceNumber);
+        upgradeText[upgradeID].text = "+" + value*10 + "%";
+
         Destroy(ress.gameObject);
+    }
+
+    /// <summary>
+    /// Update the button state to use Ressource
+    /// </summary>
+    /// <param name="ressourceNumber"></param>
+    public void UpdateButtonRessource(int ressourceNumber) {
+        if (damageUpgradeNmb >= 10 || ressourceNumber == 0) addRessourceBtn[0].interactable = false;
+        else if(damageUpgradeNmb < 10 && ressourceNumber > 0) addRessourceBtn[0].interactable = true;
+        
+        if (fireRateUpgradeNmb >= 10 || ressourceNumber == 0) addRessourceBtn[1].interactable = false;
+        else if(fireRateUpgradeNmb < 10 && ressourceNumber > 0) addRessourceBtn[1].interactable = true;
+        
+        if (bulletSpeedUpgradeNmb >= 10 || ressourceNumber == 0) addRessourceBtn[2].interactable = false;
+        else if(bulletSpeedUpgradeNmb < 10 && ressourceNumber > 0) addRessourceBtn[2].interactable = true;
+        
+        if (bulletSizeUpgreadeNmb >= 10 || ressourceNumber == 0) addRessourceBtn[3].interactable = false;
+        else if(bulletSizeUpgreadeNmb < 10 && ressourceNumber > 0) addRessourceBtn[3].interactable = true;
+    }
+    #endregion Resource
+
+    public void ChangeWeaponColor(bool isUse)
+    {
+        thisImage.color = isUse switch {
+            true => activWeaponColor,
+            false => activContractColor
+        };
     }
 }

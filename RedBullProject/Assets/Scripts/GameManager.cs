@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     #endregion Instance
 
+    [Header("Contract")]
     [SerializeField] private bool hasStartContract = false;
     [SerializeField] private WeaponUiData contractStart = null;
     [SerializeField] private List<WeaponUiData> contractGamList = new List<WeaponUiData>();
@@ -30,10 +33,20 @@ public class GameManager : MonoBehaviour
     public List<WeaponUiData> ContractGamList => contractGamList;
 
     [SerializeField] private WeaponUiData actualStat = null;
+
+    [Header("Ressources")] 
+    [SerializeField] private int basicRessourceNumber = 0;
+    [SerializeField] private int complexRessourceNumber = 0;
+    [SerializeField] private TextMeshProUGUI basicRessourceTxt = null;
+    [SerializeField] private TextMeshProUGUI complexRessourceTxt = null;
+    public int BasicRessourceNumber => basicRessourceNumber;
+    public int ComplexRessourceNumber => complexRessourceNumber;
+    
     
     private void Start() {
         ChangeContractState(true);
         ChangeWeapon(0);
+        UpdateRessourceValue();
     }
 
     private void Update() {
@@ -58,9 +71,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void ChangeWeapon(int id = -1) {
         if (id != -1) {
-            actualStat = contractGamList[id];
+            actualStat = contractGamList[0];
             return;
         }
+
+        if (actualStat != null) actualStat.ChangeWeaponColor(false);
         
         if (Input.GetKeyDown(KeyCode.Alpha1)&& contractGamList[0].IsActivAtStart) actualStat = contractGamList[0];
         else if (Input.GetKeyDown(KeyCode.Alpha2) && contractGamList[1].IsActivAtStart) actualStat = contractGamList[1];
@@ -70,6 +85,7 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha6)&& contractGamList[5].IsActivAtStart) actualStat = contractGamList[5];
 
         playerData.ChangeActualWeapon(actualStat.Weapon);
+        actualStat.ChangeWeaponColor(true);
     }
     
     #region Contract
@@ -122,5 +138,42 @@ public class GameManager : MonoBehaviour
     }
     
     #endregion Contract
+    
+    #region Ressources
+
+    /// <summary>
+    /// Function which is called when the player gain a Resource
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="basicRessource"></param>
+    public void AddBasicRessource(int value) {
+        basicRessourceNumber += value;
+        UpdateRessourceValue();
+    }
+
+    /// <summary>
+    /// When the player use a Resource
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="basicRessource"></param>
+    public void UseRessource(int value, bool basicRessource) {
+        if (basicRessource) basicRessourceNumber -= value;
+        else complexRessourceNumber -= value;
+        UpdateRessourceValue();
+    }
+    
+    /// <summary>
+    /// Update the text of the Ressources
+    /// </summary>
+    private void UpdateRessourceValue() {
+        basicRessourceTxt.text = "Resource : " + basicRessourceNumber;
+        complexRessourceTxt.text = "Complex Resource : " + complexRessourceNumber;
+        
+        foreach (WeaponUiData weapon in contractGamList) {
+            weapon.UpdateButtonRessource(basicRessourceNumber);
+        }
+    }
+    
+    #endregion Ressources
     
 }
