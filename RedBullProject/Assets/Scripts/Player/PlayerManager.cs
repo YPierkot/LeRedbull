@@ -11,6 +11,8 @@ public class PlayerManager : MonoBehaviour {
     [Header("Player Infos")] 
     [SerializeField] private GameObject playerGam = null;
     [SerializeField] private Transform shootPos = null;
+    [SerializeField] private int life = 0;
+    [SerializeField] private int maxLife = 0;
 
     [Header("Player Movement")] 
     [SerializeField] private float moveSpeed = 0;
@@ -38,8 +40,11 @@ public class PlayerManager : MonoBehaviour {
     /// <summary>
     /// Initialize rigidbody
     /// </summary>
-    private void Start() => playerRig = playerGam.GetComponent<Rigidbody>();
-    
+    private void Start() {
+        life = maxLife; 
+        playerRig = playerGam.GetComponent<Rigidbody>();
+    }
+
     private void Update() {
         GetInputs();
         actualFireRate += Time.deltaTime;
@@ -85,7 +90,26 @@ public class PlayerManager : MonoBehaviour {
         actualFireRate = 0;
         actualWeapon.ShootBullet(playerGam, shootPos, bulletContainer);
     }
+
+    /// <summary>
+    /// Change the weapon of the player
+    /// </summary>
+    /// <param name="weapon"></param>
+    public void ChangeActualWeapon(BaseWeaponSO weapon) {
+        actualWeapon = weapon;
+    }
     #endregion Methods
+    
+    #region Life
+
+    /// <summary>
+    /// When the player take damage
+    /// </summary>
+    /// <param name="damagePerBullet"></param>
+    public void TakeDamage(int damagePerBullet) {
+        life -= damagePerBullet;
+    }
+    #endregion Life
 
 #if UNITY_EDITOR
     /// <summary>
