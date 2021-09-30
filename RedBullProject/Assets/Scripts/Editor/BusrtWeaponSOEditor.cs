@@ -15,7 +15,7 @@ public class BusrtWeaponSOEditor : Editor
     }
 
     /// <summary>
-    /// Draw the variable from the base class
+    /// Draw the base class
     /// </summary>
     private void DrawBaseClas() {
         GUI.skin.label.fontSize = 17;
@@ -46,6 +46,7 @@ public class BusrtWeaponSOEditor : Editor
                 GUI.skin.label.fontSize = 12;
                 
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletStartSpeed"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletStartSize"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletGam"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletDeathTime"));
             }

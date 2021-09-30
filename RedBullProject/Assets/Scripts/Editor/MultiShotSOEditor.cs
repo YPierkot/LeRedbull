@@ -45,6 +45,7 @@ public class MultiShotSOEditor : Editor {
                 GUI.skin.label.fontSize = 12;
                 
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletStartSpeed"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletStartSize"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletGam"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletDeathTime"));
             }
@@ -67,5 +68,4 @@ public class MultiShotSOEditor : Editor {
         }
         serializedObject.ApplyModifiedProperties();
     }
-    
 }
