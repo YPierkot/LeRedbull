@@ -28,12 +28,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool hasStartContract = false;
     [SerializeField] private WeaponUiData contractStart = null;
     [SerializeField] private List<WeaponUiData> contractGamList = new List<WeaponUiData>();
-
-    [SerializeField] private PlayerManager playerData = null;
     public List<WeaponUiData> ContractGamList => contractGamList;
-
+    [SerializeField] private ShipUIData shipData = null;
+    public ShipUIData ShipUIData => shipData;
+    
+    [SerializeField] private PlayerManager playerData = null;
     [SerializeField] private WeaponUiData actualStat = null;
-
+    public WeaponUiData ActualStat => actualStat;
+    
     [Header("Ressources")] 
     [SerializeField] private int basicRessourceNumber = 0;
     [SerializeField] private int complexRessourceNumber = 0;
@@ -55,12 +57,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.M)) {
-            foreach (WeaponUiData data in contractGamList) {
-                for (int i = 0; i < data.RessourceList.Count; i++) {
-                    Ressource ress = data.RessourceList[i];
-                    ress.GetComponent<Ressource>().ReduceDurability(1);
-                }
-            }
+            UseResourcesFromShoot();
         }
 
         ChangeWeapon();
@@ -104,6 +101,7 @@ public class GameManager : MonoBehaviour
     public void StartContract(WeaponUiData contract) {
         if (contract != null && CanStartContract()) {
             contractStart = contract;
+            contractStart.ButtonAnim.SetBool("PlayAnim", true);
             hasStartContract = true;
             ChangeContractState(false);
         }
@@ -113,6 +111,7 @@ public class GameManager : MonoBehaviour
     /// When the contract is finished
     /// </summary>
     public void StopContract() {
+        contractStart.ButtonAnim.SetBool("PlayAnim", false);
         hasStartContract = false;
         contractStart = null;
         ChangeContractState(true);
@@ -130,10 +129,14 @@ public class GameManager : MonoBehaviour
     /// <param name="activ"></param>
     private void ChangeContractState(bool activ) {
         foreach (WeaponUiData contract in contractGamList) {
-            if (!contract.IsActivAtStart) {
+            if (contract.Length < 1) {
                 contract.IconAnim.SetBool("Activ", activ);
+                if (contract != contractStart) contract.ContractButton.interactable = activ;
             }
-            contract.ContractButton.enabled = activ;
+            else {
+                contract.ContractButton.enabled = false;
+            }
+
         }
     }
     
@@ -148,6 +151,15 @@ public class GameManager : MonoBehaviour
     /// <param name="basicRessource"></param>
     public void AddBasicRessource(int value) {
         basicRessourceNumber += value;
+        UpdateRessourceValue();
+    }
+    
+    /// <summary>
+    /// Add complex Resources to the player when completing a contract
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddComplexResource(int value) {
+        complexRessourceNumber += value;
         UpdateRessourceValue();
     }
 
@@ -171,6 +183,19 @@ public class GameManager : MonoBehaviour
         
         foreach (WeaponUiData weapon in contractGamList) {
             weapon.UpdateButtonRessource(basicRessourceNumber);
+        }
+        shipData.UpdateButtonRessource(complexRessourceNumber);
+    }
+    
+    /// <summary>
+    /// use Resources each time the player shoot
+    /// </summary>
+    public void UseResourcesFromShoot() {
+        foreach (WeaponUiData data in contractGamList) {
+            for (int i = 0; i < data.RessourceList.Count; i++) {
+                Ressource ress = data.RessourceList[i];
+                ress.GetComponent<Ressource>().ReduceDurability(1);
+            }
         }
     }
     

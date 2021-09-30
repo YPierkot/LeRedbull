@@ -12,13 +12,15 @@ public class MultiShotsSO : BaseWeaponSO {
     /// <param name="player"></param>
     /// <param name="bulletSpawn"></param>
     /// <param name="bulletContainer"></param>
-    public override void ShootBullet(GameObject player, Transform bulletSpawn, Transform bulletContainer) {
-        GameObject bulletSpawned = Instantiate(BulletGam, bulletSpawn.position - new Vector3(moveSpawnShot, 0 ,0), player.transform.rotation, bulletContainer);
-        bulletSpawned.GetComponent<Rigidbody>().AddForce(player.transform.forward * BulletStartSpeed, ForceMode.Impulse);
+    public override void ShootBullet(GameObject player, Transform bulletSpawn, int damageUpgradeNmb, int bulletSizeUpgradeNmb, int bulletSpeedUpgradeNmb) {
+        GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform);
+        bulletSpawned.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
+        bulletSpawned.GetComponent<Rigidbody>().AddForce(player.transform.forward * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
         Destroy(bulletSpawned, BulletDeathTime);
         
-        GameObject bulletSpawned2 = Instantiate(BulletGam, bulletSpawn.position + new Vector3(moveSpawnShot, 0 ,0), player.transform.rotation, bulletContainer);
-        bulletSpawned2.GetComponent<Rigidbody>().AddForce(player.transform.forward * BulletStartSpeed, ForceMode.Impulse);
+        GameObject bulletSpawned2 = GetBullet(bulletSpawn, player.transform);
+        bulletSpawned2.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
+        bulletSpawned2.GetComponent<Rigidbody>().AddForce(player.transform.forward * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
         Destroy(bulletSpawned2, BulletDeathTime);
     }
 

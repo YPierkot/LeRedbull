@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 175eac57ce8b6d64ea286e71338b40a4, type: 3}
-  m_Name: ShotGun
+  m_Script: {fileID: 11500000, guid: 1bb43a398680636459125cd3d1e197cf, type: 3}
+  m_Name: DualShot
   m_EditorClassIdentifier: 
-  weaponName: ThreeShot Burst
-  fireRate: 1
+  weaponName: DualShot
+  fireRate: 0.5
   damage: 1
   bulletStartSpeed: 20
+  bulletStartSize: 0.5
   bulletGam: {fileID: 8072388550839433965, guid: ed87284b3215c2748be90e9a499288c5, type: 3}
   bulletDeathTime: 4
-  burstAngle: 30
-  randomShot: 0
-  nmbBulletPerShot: 9
+  moveSpawnShot: 0.5

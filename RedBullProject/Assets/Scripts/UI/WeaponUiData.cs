@@ -15,6 +15,7 @@ public class WeaponUiData : MonoBehaviour {
     [SerializeField] private Sprite lockSprite = null;
     [SerializeField] private Sprite objectSprite = null;
     [SerializeField] private Image iconImage = null;
+
     [SerializeField] private Animator iconAnim = null;
     [SerializeField] private Image thisImage = null;
     public Animator IconAnim => iconAnim;
@@ -26,13 +27,16 @@ public class WeaponUiData : MonoBehaviour {
     public Button OpenStatButton => openStatButton;
 
     [Header("Contract Data")] 
+    [SerializeField] private Animator buttonAnim = null;
+    public Animator ButtonAnim => buttonAnim;
     [SerializeField] private int actualEnnemyKill = 0;
     [SerializeField] private int contractEnnemyToKill = 0;
     [SerializeField] private Image contractSlider = null;
     [SerializeField] private Color activContractColor = new Color();
     [SerializeField] private Color notActivContractColor = new Color();
     [SerializeField] private Color activWeaponColor = new Color();
-
+    public float Length => (float) actualEnnemyKill / contractEnnemyToKill;
+    
     [Header("Weapon Stat Upgrade")] [SerializeField]
     private GameObject openStatButtonPanel = null;
     [SerializeField] private GameObject statPanel = null;
@@ -43,6 +47,9 @@ public class WeaponUiData : MonoBehaviour {
     [SerializeField] private int bulletSpeedUpgradeNmb = 0;
     [SerializeField] private int bulletSizeUpgreadeNmb = 0;
     public int DamageUpgradeNmb => damageUpgradeNmb;
+    public int FireRateUpgradeNmb => fireRateUpgradeNmb;
+    public int BulletSpeedUpgradeNmb => bulletSpeedUpgradeNmb;
+    public int BulletSizeUpgreadeNmb => bulletSizeUpgreadeNmb;
 
     [SerializeField] private GameObject ressourceGam = null;
     [SerializeField] private List<Ressource> ressourceList = new List<Ressource>();
@@ -119,9 +126,11 @@ public class WeaponUiData : MonoBehaviour {
             foreach (WeaponUiData weapon in GameManager.Instance.ContractGamList) {
                 if (weapon.statPanel.activeSelf && weapon.statPanel != statPanel) weapon.ChangePanelStatState(true);
             }
+            if(GameManager.Instance.ShipUIData.StatPanel.activeSelf) GameManager.Instance.ShipUIData.ChangePanelStatState(true);
         }
 
         StatPanel.SetActive(!StatPanel.activeSelf);
+        openStatButton.gameObject.transform.localRotation = statPanel.activeSelf ? Quaternion.Euler(0,0,180) : Quaternion.Euler(0,0,0);
     }
     #endregion Contract
 
@@ -217,6 +226,10 @@ public class WeaponUiData : MonoBehaviour {
     }
     #endregion Resource
 
+    /// <summary>
+    /// Change the color of the weapon
+    /// </summary>
+    /// <param name="isUse"></param>
     public void ChangeWeaponColor(bool isUse)
     {
         thisImage.color = isUse switch {

@@ -40,11 +40,12 @@ public class BurstWeaponSO : BaseWeaponSO {
     /// <param name="player"></param>
     /// <param name="bulletSpawn"></param>
     /// <param name="bulletContainer"></param>
-    public override void ShootBullet(GameObject player, Transform bulletSpawn, Transform bulletContainer) {
+    public override void ShootBullet(GameObject player, Transform bulletSpawn, int damageUpgradeNmb, int bulletSizeUpgradeNmb, int bulletSpeedUpgradeNmb) {
         if (randomShot) {
             Vector3 direction = GetRandomDirection(player);
-            GameObject bulletSpawned = Instantiate(BulletGam, bulletSpawn.position, player.transform.rotation, bulletContainer);
-            bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * BulletStartSpeed, ForceMode.Impulse);
+            GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform);
+            bulletSpawned.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
+            bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
             Destroy(bulletSpawned, BulletDeathTime);
         }
         else {
@@ -53,8 +54,9 @@ public class BurstWeaponSO : BaseWeaponSO {
             
             for (int i = 0; i < nmbBulletPerShot; i++) {
                 Vector3 direction = GetRotationAngle(startAngle + (i * angleToAdd), player.transform.forward, 1);
-                GameObject bulletSpawned = Instantiate(BulletGam, bulletSpawn.position, player.transform.rotation, bulletContainer);
-                bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * BulletStartSpeed, ForceMode.Impulse);
+                GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform);
+                bulletSpawned.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
+                bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
                 Destroy(bulletSpawned, BulletDeathTime);
             }
         }
