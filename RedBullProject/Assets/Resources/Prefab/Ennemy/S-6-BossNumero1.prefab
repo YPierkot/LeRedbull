@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 6486403610670582532}
   - component: {fileID: 6486403610670582528}
   - component: {fileID: 6486403610670582555}
+  - component: {fileID: 2819496750970411425}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -189,6 +190,14 @@ MonoBehaviour:
       bulletNumber: 6
       timeBetweenShoot: 7
       burstRotation: 0
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
     fireStraight:
       ballSpeed: 0
       bulletMissShoot: 0
@@ -207,6 +216,14 @@ MonoBehaviour:
       bulletNumber: 10
       timeBetweenShoot: 1
       burstRotation: 10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
     fireStraight:
       ballSpeed: 0
       bulletMissShoot: 0
@@ -225,6 +242,14 @@ MonoBehaviour:
       bulletNumber: 10
       timeBetweenShoot: 1
       burstRotation: -10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
     fireStraight:
       ballSpeed: 0
       bulletMissShoot: 0
@@ -243,6 +268,14 @@ MonoBehaviour:
       bulletNumber: 10
       timeBetweenShoot: 1
       burstRotation: -10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
     fireStraight:
       ballSpeed: 0
       bulletMissShoot: 0
@@ -261,6 +294,14 @@ MonoBehaviour:
       bulletNumber: 10
       timeBetweenShoot: 0.5
       burstRotation: 10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
     fireStraight:
       ballSpeed: 0
       bulletMissShoot: 0
@@ -279,6 +320,14 @@ MonoBehaviour:
       bulletNumber: 10
       timeBetweenShoot: 0.5
       burstRotation: 10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
     fireStraight:
       ballSpeed: 0
       bulletMissShoot: 0
@@ -297,6 +346,14 @@ MonoBehaviour:
       bulletNumber: 10
       timeBetweenShoot: 0.5
       burstRotation: -10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
     fireStraight:
       ballSpeed: 0
       bulletMissShoot: 0
@@ -315,6 +372,14 @@ MonoBehaviour:
       bulletNumber: 10
       timeBetweenShoot: 0.5
       burstRotation: -10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
     fireStraight:
       ballSpeed: 0
       bulletMissShoot: 0
@@ -323,3 +388,43 @@ MonoBehaviour:
       bulletSpeed: 8
       bulletNumber: 20
       timeBetweenShoot: 2
+  - name: AlwaysSpin
+    frames: 50
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 6
+      burstBullets: 6
+      burstAngle: 180
+      bulletNumber: 500
+      timeBetweenShoot: 1
+      burstRotation: 5
+      bulletSizeFactor: 0.2
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 8
+      bulletNumber: 20
+      timeBetweenShoot: 2
+--- !u!114 &2819496750970411425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486403610670582553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5449c3d42023d48985f14a7558c879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 75
+  parent: {fileID: 6486403610003472092}

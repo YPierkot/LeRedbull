@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnemyTimeline : MonoBehaviour
 {
-    private int frameCounter;
+    public int frameCounter;
     public float refreshTime;
 
     public Transform bossSpawn;
