@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class EnemyTimeline : MonoBehaviour
 {
-    public int frameCounter;
+    private int frameCounter;
     public float refreshTime;
 
-    public Transform rightSpawn;
-    public Transform centerSpawn;
+    public Transform bossSpawn;
     public Transform leftSpawn;
+    public Transform centerSpawn;
+    public Transform rightSpawn;
     
-    public GameObject boss;
-    public bool hasSpawnBoss;
+    private GameObject boss;
+    private bool hasSpawnBoss;
     
     public List<EnemySlot> enemySlots = new List<EnemySlot>();
 
@@ -38,25 +39,85 @@ public class EnemyTimeline : MonoBehaviour
             {
                 switch (enemySlots[i].spawnPoint)
                 {
-                    case SpawnPoint.RightSpawn:
+                    case SpawnPoint.BossSpawn:
+                        InstantiateBoss(enemySlots[i].prefab, enemySlots[i]); 
+                        break;
+                    case SpawnPoint.LeftSpawn:
                         InstantiateLeft(enemySlots[i].prefab, enemySlots[i]); 
                         break;
                     case SpawnPoint.CenterSpawn:
-                        Instantiate(enemySlots[i].prefab, centerSpawn.transform.position, enemySlots[i].prefab.transform.rotation, centerSpawn);
-                        Debug.Log("Enemy Center Spawn");
+                        InstantiateCenter(enemySlots[i].prefab, enemySlots[i]); 
                         break;
-                    case SpawnPoint.LeftSpawn:
-                        Instantiate(enemySlots[i].prefab, leftSpawn.transform.position, enemySlots[i].prefab.transform.rotation, leftSpawn);
-                        Debug.Log("Enemy Left Spawn");
+                    case SpawnPoint.RightSpawn:
+                        InstantiateRight(enemySlots[i].prefab, enemySlots[i]); 
                         break;
                 }
             }
         }
     }
 
+    void InstantiateBoss(GameObject prefab, EnemySlot enemySlot)
+    {
+        Quaternion rotation = prefab.transform.rotation;
+
+        if (enemySlot.flip)
+            rotation = rotation * Quaternion.Euler(0, 0, 180);
+
+        GameObject newGameObject = Instantiate(prefab, bossSpawn.transform.position, rotation, bossSpawn);
+        if (enemySlot.isBoss)
+        {
+            boss = newGameObject;
+            frameCounter++;
+            hasSpawnBoss = true;
+            Destroy(boss, enemySlot.timeBeforeDestroy);
+            return;
+        }
+
+        Destroy(newGameObject, enemySlot.timeBeforeDestroy);
+    }
+    
     void InstantiateLeft(GameObject prefab, EnemySlot enemySlot)
     {
-        Debug.Log("Enemy Right Spawn");
+        Quaternion rotation = prefab.transform.rotation;
+
+        if (enemySlot.flip)
+            rotation = rotation * Quaternion.Euler(0, 0, 180);
+
+        GameObject newGameObject = Instantiate(prefab, leftSpawn.transform.position, rotation, leftSpawn);
+        if (enemySlot.isBoss)
+        {
+            boss = newGameObject;
+            frameCounter++;
+            hasSpawnBoss = true;
+            Destroy(boss, enemySlot.timeBeforeDestroy);
+            return;
+        }
+
+        Destroy(newGameObject, enemySlot.timeBeforeDestroy);
+    }
+    
+    void InstantiateCenter(GameObject prefab, EnemySlot enemySlot)
+    {
+        Quaternion rotation = prefab.transform.rotation;
+
+        if (enemySlot.flip)
+            rotation = rotation * Quaternion.Euler(0, 0, 180);
+
+        GameObject newGameObject = Instantiate(prefab, centerSpawn.transform.position, rotation, centerSpawn);
+        if (enemySlot.isBoss)
+        {
+            boss = newGameObject;
+            frameCounter++;
+            hasSpawnBoss = true;
+            Destroy(boss, enemySlot.timeBeforeDestroy);
+            return;
+        }
+
+        Destroy(newGameObject, enemySlot.timeBeforeDestroy);
+    }
+    
+    void InstantiateRight(GameObject prefab, EnemySlot enemySlot)
+    {
         Quaternion rotation = prefab.transform.rotation;
 
         if (enemySlot.flip)
@@ -79,6 +140,7 @@ public class EnemyTimeline : MonoBehaviour
 
 public enum SpawnPoint
 {
+    BossSpawn,
     RightSpawn,
     CenterSpawn,
     LeftSpawn,
