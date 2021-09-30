@@ -137,7 +137,7 @@ MonoBehaviour:
     actionsEnum: 0
     fireBurst:
       burstSpeed: 25
-      burstBullets: 4
+      burstBullets: 6
       burstAngle: 180
       bulletNumber: 50
       timeBetweenShoot: 0.5
@@ -159,14 +159,14 @@ MonoBehaviour:
       bulletNumber: 0
       timeBetweenShoot: 0
   - name: 
-    frames: 1
+    frames: 5
     actionsEnum: 0
     fireBurst:
-      burstSpeed: 5
-      burstBullets: 2
+      burstSpeed: 25
+      burstBullets: 6
       burstAngle: 180
-      bulletNumber: 45
-      timeBetweenShoot: 1
+      bulletNumber: 50
+      timeBetweenShoot: 0.5
       burstRotation: 10
       bulletSizeFactor: 0
     randomFire:
@@ -199,7 +199,7 @@ MonoBehaviour:
   weapons: {fileID: 1920721770659665594}
   pathCreator: {fileID: 1269271347810087248}
   endOfPathInstruction: 2
-  speed: 8
+  speed: 10
   length: 0
 --- !u!114 &3935227994278400366
 MonoBehaviour:

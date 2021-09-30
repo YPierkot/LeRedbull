@@ -303,7 +303,7 @@ MonoBehaviour:
   weapons: {fileID: 0}
   pathCreator: {fileID: 494451077695101441}
   endOfPathInstruction: 1
-  speed: 12
+  speed: 13
   length: 0
 --- !u!54 &3731150558290012952
 Rigidbody:
