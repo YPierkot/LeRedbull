@@ -15604,6 +15604,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1540371785}
     m_Modifications:
+    - target: {fileID: 87597686659006003, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4241008820855963872, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

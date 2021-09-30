@@ -17,8 +17,10 @@ public class WeaponUiData : MonoBehaviour {
     [SerializeField] private Image iconImage = null;
 
     [SerializeField] private Animator iconAnim = null;
+    [SerializeField] private Animator effectAnim = null;
     [SerializeField] private Image thisImage = null;
     public Animator IconAnim => iconAnim;
+    public Animator EffectAnim => effectAnim;
     
     [Header("Button data")] 
     [SerializeField] private Button contractButton = null;

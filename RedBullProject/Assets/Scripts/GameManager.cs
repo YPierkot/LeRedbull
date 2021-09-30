@@ -72,7 +72,10 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if (actualStat != null) actualStat.ChangeWeaponColor(false);
+        if (actualStat != null) {
+            actualStat.ChangeWeaponColor(false);
+            actualStat.EffectAnim.SetBool("PlayAnim", false);
+        }
         
         if (Input.GetKeyDown(KeyCode.Alpha1)&& contractGamList[0].IsActivAtStart) actualStat = contractGamList[0];
         else if (Input.GetKeyDown(KeyCode.Alpha2) && contractGamList[1].IsActivAtStart) actualStat = contractGamList[1];
@@ -83,6 +86,7 @@ public class GameManager : MonoBehaviour
 
         playerData.ChangeActualWeapon(actualStat.Weapon);
         actualStat.ChangeWeaponColor(true);
+        actualStat.EffectAnim.SetBool("PlayAnim", true);
     }
     
     #region Contract
