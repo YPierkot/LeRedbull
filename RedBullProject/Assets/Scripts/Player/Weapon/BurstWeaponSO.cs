@@ -46,7 +46,6 @@ public class BurstWeaponSO : BaseWeaponSO {
             GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform);
             bulletSpawned.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
             bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
-            Destroy(bulletSpawned, BulletDeathTime);
         }
         else {
             float startAngle = -burstAngle;
@@ -57,7 +56,6 @@ public class BurstWeaponSO : BaseWeaponSO {
                 GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform);
                 bulletSpawned.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
                 bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
-                Destroy(bulletSpawned, BulletDeathTime);
             }
         }
     }

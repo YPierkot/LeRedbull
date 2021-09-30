@@ -16,12 +16,10 @@ public class MultiShotsSO : BaseWeaponSO {
         GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform);
         bulletSpawned.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
         bulletSpawned.GetComponent<Rigidbody>().AddForce(player.transform.forward * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
-        Destroy(bulletSpawned, BulletDeathTime);
-        
+
         GameObject bulletSpawned2 = GetBullet(bulletSpawn, player.transform);
         bulletSpawned2.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
         bulletSpawned2.GetComponent<Rigidbody>().AddForce(player.transform.forward * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
-        Destroy(bulletSpawned2, BulletDeathTime);
     }
 
 #if  UNITY_EDITOR

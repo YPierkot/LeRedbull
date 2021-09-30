@@ -1040,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379593, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_Name
-      value: WeaponGroup04
+      value: 'WeaponGroup04 : dualAng'
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: weapon
@@ -2787,7 +2787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379593, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_Name
-      value: WeaponGroup05
+      value: 'WeaponGroup05 : Tri'
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: weapon
@@ -4102,7 +4102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379593, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_Name
-      value: WeaponGroup02
+      value: 'WeaponGroup02 : random'
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: weapon
@@ -5998,12 +5998,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379593, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_Name
-      value: WeaponGroup06
+      value: 'WeaponGroup06 : shotgun'
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 11400000, guid: 89b1add57899453449f41eabc6d67f19, type: 2}
+      objectReference: {fileID: 11400000, guid: 29973c1cc608cff458de65788e45b2e2, type: 2}
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: objectSprite
       value: 
@@ -8373,7 +8373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379593, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_Name
-      value: WeaponGroup03
+      value: 'WeaponGroup03 : dual'
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: weapon
@@ -10418,7 +10418,7 @@ MonoBehaviour:
   life: 0
   maxLife: 10
   moveSpeed: 8
-  actualWeapon: {fileID: 11400000, guid: 89b1add57899453449f41eabc6d67f19, type: 2}
+  actualWeapon: {fileID: 11400000, guid: 591832b67105e5d459be87630e223194, type: 2}
   bulletContainer: {fileID: 935530805}
 --- !u!1 &1948091672
 GameObject:
@@ -15766,7 +15766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379593, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_Name
-      value: WeaponGroup01
+      value: 'WeaponGroup01 : base'
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: weapon

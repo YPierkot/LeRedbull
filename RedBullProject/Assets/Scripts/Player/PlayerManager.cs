@@ -55,7 +55,7 @@ public class PlayerManager : MonoBehaviour {
     /// Move the rigidbody
     /// </summary>
     private void FixedUpdate() {
-       if(moveDirectionRaw != Vector3.zero) playerRig.velocity = moveDirection * moveSpeed;
+       if(moveDirectionRaw != Vector3.zero) playerRig.velocity = moveDirection * (moveSpeed + moveSpeed * (GameManager.Instance.ShipUIData.MoveSpeedUpgradeNmb * 10) / 100);
     }
 
     #region Methods
