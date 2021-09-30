@@ -25,10 +25,8 @@ public class PlayerManager : MonoBehaviour {
     //Rigidbody
     private Rigidbody playerRig = null;
     
-    //Move Data
-    private int verticalMove = 0;
-    private int horizontalMove = 0;
-    private Vector3 moveDirection = new Vector2();
+    private Vector3 moveDirection = new Vector3();
+    private Vector3 moveDirectionRaw = new Vector3();
     
     //Shoot Data
     private float actualFireRate = 0;
@@ -48,8 +46,7 @@ public class PlayerManager : MonoBehaviour {
     private void Update() {
         GetInputs();
         actualFireRate += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && actualFireRate >= actualWeapon.FireRate)
-        {
+        if (Input.GetKey(KeyCode.Space) && actualFireRate >= GetFireRate(GameManager.Instance.ActualStat.FireRateUpgradeNmb + GameManager.Instance.ShipUIData.FireRateUpgradeNmb)) {
             ShootBullet();
         }
     }
@@ -58,7 +55,7 @@ public class PlayerManager : MonoBehaviour {
     /// Move the rigidbody
     /// </summary>
     private void FixedUpdate() {
-       if(moveDirection != Vector3.zero) playerRig.velocity = moveDirection * moveSpeed;
+       if(moveDirectionRaw != Vector3.zero) playerRig.velocity = moveDirection * (moveSpeed + moveSpeed * (GameManager.Instance.ShipUIData.MoveSpeedUpgradeNmb * 10) / 100);
     }
 
     #region Methods
@@ -66,29 +63,22 @@ public class PlayerManager : MonoBehaviour {
     /// Get the inputs for the movement
     /// </summary>
     private void GetInputs() {
-        //Input Down
-        if (Input.GetKeyDown(KeyCode.DownArrow)) verticalMove -= 1;
-        if (Input.GetKeyDown(KeyCode.UpArrow)) verticalMove += 1;
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) horizontalMove -= 1;
-        if (Input.GetKeyDown(KeyCode.RightArrow)) horizontalMove += 1;
-
-        //Input Up
-        if (Input.GetKeyUp(KeyCode.DownArrow)) verticalMove += 1;
-        if (Input.GetKeyUp(KeyCode.UpArrow)) verticalMove -= 1;
-        if (Input.GetKeyUp(KeyCode.LeftArrow)) horizontalMove += 1;
-        if (Input.GetKeyUp(KeyCode.RightArrow)) horizontalMove -= 1;
-        
         //Set MoveDirection based on the inputs
-        moveDirection = new Vector3(horizontalMove, 0, verticalMove).normalized;
+        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        moveDirectionRaw = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
     }
     
     /// <summary>
     /// Shoot the bullet
     /// </summary>
-    private  void ShootBullet() 
-    {
+    private  void ShootBullet() {
         actualFireRate = 0;
-        actualWeapon.ShootBullet(playerGam, shootPos, bulletContainer);
+        WeaponUiData weapon = GameManager.Instance.ActualStat;
+        ShipUIData ship = GameManager.Instance.ShipUIData;
+        actualWeapon.ShootBullet(playerGam, shootPos, weapon.DamageUpgradeNmb + ship.DamageUpgradeNmb,
+            weapon.BulletSizeUpgreadeNmb + ship.BulletSizeUpgreadeNmb,
+            weapon.BulletSpeedUpgradeNmb + ship.BulletSpeedUpgradeNmb);
+        GameManager.Instance.UseResourcesFromShoot();
     }
 
     /// <summary>
@@ -98,6 +88,16 @@ public class PlayerManager : MonoBehaviour {
     public void ChangeActualWeapon(BaseWeaponSO weapon) {
         actualWeapon = weapon;
     }
+
+    /// <summary>
+    /// Get the firerate of the actual weapon
+    /// </summary>
+    /// <param name="FireRateUpgradeNmb"></param>
+    /// <returns></returns>
+    private float GetFireRate(int FireRateUpgradeNmb) {
+        return actualWeapon.FireRate - (actualWeapon.FireRate * ((FireRateUpgradeNmb * 10f) / 100f));
+    }
+    
     #endregion Methods
     
     #region Life
