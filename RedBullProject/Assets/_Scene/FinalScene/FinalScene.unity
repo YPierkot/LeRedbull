@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39372703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.023514748, y: 15.139656, z: 30.722}
+  m_LocalPosition: {x: 0.023514748, y: 14.74, z: 30.722}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1569509331}
@@ -4017,106 +4017,106 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5798e3e9bf622a41816d8660b5d5a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameCounter: 0
+  frameCounter: 1700
   refreshTime: 50000
   bossSpawn: {fileID: 997281959}
   leftSpawn: {fileID: 879879740}
   centerSpawn: {fileID: 39372704}
   rightSpawn: {fileID: 676608793}
   enemySlots:
-  - name: Spinning
+  - name: LeftSimpleStraightDescending
+    frame: 200
+    prefab: {fileID: 8159513848930354238, guid: 91f2f41a7caa63342b9486575b22c315, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: RightSimpleStraightDescending
+    frame: 250
+    prefab: {fileID: 7677904895121981714, guid: 59fab881b05004040a2c2229711f7f83, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: LeftSimpleStraightDescending
     frame: 300
+    prefab: {fileID: 8159513848930354238, guid: 91f2f41a7caa63342b9486575b22c315, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: RightSimpleStraightDescending
+    frame: 350
+    prefab: {fileID: 7677904895121981714, guid: 59fab881b05004040a2c2229711f7f83, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: LeftSimpleStraightDescending
+    frame: 400
+    prefab: {fileID: 8159513848930354238, guid: 91f2f41a7caa63342b9486575b22c315, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: Spinning
+    frame: 600
     prefab: {fileID: 1920721772136315679, guid: 31cca34ec8cece24297b2ae1c3d40def, type: 3}
     spawnPoint: 2
     timeBeforeDestroy: 26
     flip: 0
     isBoss: 0
-  - name: LeftSimpleStraightDescending
-    frame: 800
-    prefab: {fileID: 8159513848930354238, guid: 91f2f41a7caa63342b9486575b22c315, type: 3}
-    spawnPoint: 3
-    timeBeforeDestroy: 13
-    flip: 0
-    isBoss: 0
-  - name: RightSimpleStraightDescending
-    frame: 900
-    prefab: {fileID: 7677904895121981714, guid: 59fab881b05004040a2c2229711f7f83, type: 3}
-    spawnPoint: 1
-    timeBeforeDestroy: 13
-    flip: 0
-    isBoss: 0
-  - name: LeftSimpleStraightDescending
-    frame: 1000
-    prefab: {fileID: 8159513848930354238, guid: 91f2f41a7caa63342b9486575b22c315, type: 3}
-    spawnPoint: 3
-    timeBeforeDestroy: 13
-    flip: 0
-    isBoss: 0
-  - name: RightSimpleStraightDescending
-    frame: 1100
-    prefab: {fileID: 7677904895121981714, guid: 59fab881b05004040a2c2229711f7f83, type: 3}
-    spawnPoint: 1
-    timeBeforeDestroy: 13
-    flip: 0
-    isBoss: 0
-  - name: LeftSimpleStraightDescending
-    frame: 1200
-    prefab: {fileID: 8159513848930354238, guid: 91f2f41a7caa63342b9486575b22c315, type: 3}
-    spawnPoint: 3
-    timeBeforeDestroy: 13
-    flip: 0
-    isBoss: 0
   - name: LeftSpiningCurve
-    frame: 1800
+    frame: 800
     prefab: {fileID: 5230802432169454123, guid: d75e60a181215a1448584267b60377a3, type: 3}
     spawnPoint: 3
     timeBeforeDestroy: 18
     flip: 0
     isBoss: 0
   - name: RightSpiningCurve
-    frame: 1800
+    frame: 800
     prefab: {fileID: 4973754327543560332, guid: 7f48a89c533d60b438bea5848cda1545, type: 3}
     spawnPoint: 1
     timeBeforeDestroy: 18
     flip: 1
     isBoss: 0
   - name: BigStraightShip
-    frame: 2800
+    frame: 1000
     prefab: {fileID: 157093743097813778, guid: 51c9eb95a86e3aa4c843a70432e0ce79, type: 3}
     spawnPoint: 2
-    timeBeforeDestroy: 40
+    timeBeforeDestroy: 20
     flip: 0
     isBoss: 0
   - name: RandomBurst
-    frame: 3500
+    frame: 1050
     prefab: {fileID: 494451078176031886, guid: 58a9baba133591b4d8b9d08e950bb889, type: 3}
     spawnPoint: 3
-    timeBeforeDestroy: 20
+    timeBeforeDestroy: 11
     flip: 0
     isBoss: 0
   - name: RandomBurst
-    frame: 3600
+    frame: 1100
     prefab: {fileID: 494451078176031886, guid: 58a9baba133591b4d8b9d08e950bb889, type: 3}
     spawnPoint: 1
-    timeBeforeDestroy: 20
+    timeBeforeDestroy: 11
     flip: 1
     isBoss: 0
   - name: RandomBurst
-    frame: 3700
+    frame: 1150
     prefab: {fileID: 494451078176031886, guid: 58a9baba133591b4d8b9d08e950bb889, type: 3}
     spawnPoint: 3
-    timeBeforeDestroy: 20
+    timeBeforeDestroy: 11
     flip: 0
     isBoss: 0
   - name: RandomBurst
-    frame: 3800
+    frame: 1200
     prefab: {fileID: 494451078176031886, guid: 58a9baba133591b4d8b9d08e950bb889, type: 3}
     spawnPoint: 1
-    timeBeforeDestroy: 20
+    timeBeforeDestroy: 11
     flip: 1
     isBoss: 0
   - name: FirstBoss
-    frame: 5000
+    frame: 1800
     prefab: {fileID: 6486403610003472092, guid: 9da19bfa8852bad498fe72471cffb420, type: 3}
     spawnPoint: 0
     timeBeforeDestroy: 5000
@@ -5632,7 +5632,7 @@ Transform:
   m_GameObject: {fileID: 777670245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 1506431442}
   - {fileID: 518770901}
@@ -6024,6 +6024,87 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &945806234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 945806238}
+  - component: {fileID: 945806237}
+  - component: {fileID: 945806236}
+  m_Layer: 0
+  m_Name: Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &945806236
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945806234}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 2b93a3af29936634c8b76cdd34a93b7d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &945806237
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945806234}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &945806238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945806234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.4, y: -1.35, z: 17.8213}
+  m_LocalScale: {x: 91, y: 1, z: 59}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &946623971
 GameObject:
@@ -7426,7 +7507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997281958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.023514748, y: 15.139656, z: 7.6219997}
+  m_LocalPosition: {x: 0.023514748, y: 16.54, z: 7.6219997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1569509331}

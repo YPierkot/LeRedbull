@@ -131,7 +131,7 @@ MonoBehaviour:
   weapons: {fileID: 8159513848062554240}
   pathCreator: {fileID: 8159513848897165356}
   endOfPathInstruction: 2
-  speed: 9
+  speed: 10
   length: 0
 --- !u!114 &8159513848062554240
 MonoBehaviour:
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canActivate: 1
-  refreshTime: 25
+  refreshTime: 15
   ennemyPrefab: {fileID: 8159513848062554242}
   actionClasses:
   - name: 

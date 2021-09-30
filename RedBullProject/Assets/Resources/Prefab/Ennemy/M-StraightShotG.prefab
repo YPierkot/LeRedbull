@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canActivate: 1
-  refreshTime: 25
+  refreshTime: 15
   ennemyPrefab: {fileID: 7677904895978206638}
   actionClasses:
   - name: 
