@@ -10,7 +10,7 @@ public class BulletPoolBehavior : MonoBehaviour {
     public int Damage => damage;
 
     private void OnEnable() {
-        StartCoroutine(DestroyPooledObject());
+        if(waitForDestruction > 0) StartCoroutine(DestroyPooledObject());
     }
 
     /// <summary>

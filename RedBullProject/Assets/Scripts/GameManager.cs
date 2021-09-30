@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Runtime.CompilerServices;
+using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,8 +38,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI complexRessourceTxt = null;
     public int BasicRessourceNumber => basicRessourceNumber;
     public int ComplexRessourceNumber => complexRessourceNumber;
-    
-    
+
+    [Header("Other")] 
+    [SerializeField] private GameObject damageText = null;
+    public GameObject DamageText => damageText;
+    [SerializeField] private GameObject damageEffect = null;
+    public GameObject DamageEffect => damageEffect;
+
     private void Start() {
         ChangeContractState(true);
         ChangeWeapon(0);
@@ -153,9 +153,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="value"></param>
     /// <param name="basicRessource"></param>
-    public void AddBasicRessource(int value) {
-        basicRessourceNumber += value;
-        UpdateRessourceValue();
+    public void AddBasicRessource(int randomValue) {
+        int random = Random.Range(0, 100);
+        if (randomValue >= random) {
+            basicRessourceNumber += 1;
+            UpdateRessourceValue();
+        }
     }
     
     /// <summary>
@@ -195,11 +198,12 @@ public class GameManager : MonoBehaviour
     /// use Resources each time the player shoot
     /// </summary>
     public void UseResourcesFromShoot() {
-        foreach (WeaponUiData data in contractGamList) {
-            for (int i = 0; i < data.RessourceList.Count; i++) {
-                Ressource ress = data.RessourceList[i];
-                ress.GetComponent<Ressource>().ReduceDurability(1);
-            }
+        List<Ressource> resourcesList = actualStat.RessourceList.ToList();
+        
+        for (int i = 0; i < resourcesList.Count; i++) {
+            Ressource ress = null;
+            if(resourcesList[i] != null) ress = resourcesList[i];
+            if(ress != null) ress.GetComponent<Ressource>().ReduceDurability(1);
         }
     }
     
