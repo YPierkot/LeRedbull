@@ -594,5 +594,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5449c3d42023d48985f14a7558c879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 75
+  life: 50
   parent: {fileID: 6486403610003472092}

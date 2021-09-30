@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering.LWRP;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour {
     #region Variables
@@ -17,8 +18,16 @@ public class PlayerManager : MonoBehaviour {
     [Header("Player Movement")] 
     [SerializeField] private float moveSpeed = 0;
 
-    [Header("Player Shoot")] [SerializeField]
-    private BaseWeaponSO actualWeapon;
+    [Header("Player Shoot")] 
+    [SerializeField] private BaseWeaponSO actualWeapon;
+    
+    [Header("Slow Motion")] 
+    [SerializeField] private Image slowMotionSlider = null;
+    [SerializeField] private Image slowMotionImg = null;
+    [SerializeField] private float slowMotionValue = 0f;
+    [SerializeField] private float slowMotionLength = 0f;
+    [SerializeField] private float slowMotionForce = 0f;
+    [SerializeField] private Color slowMotionColorWhenUsed = new Color();
 
     #region privateVariable
     //Rigidbody
@@ -29,6 +38,7 @@ public class PlayerManager : MonoBehaviour {
     
     //Shoot Data
     private float actualFireRate = 0;
+    private bool hasReachEnd;
     
     #endregion PrivateVariable
     
@@ -45,8 +55,17 @@ public class PlayerManager : MonoBehaviour {
     private void Update() {
         GetInputs();
         actualFireRate += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && actualFireRate >= GetFireRate(GameManager.Instance.ActualStat.FireRateUpgradeNmb + GameManager.Instance.ShipUIData.FireRateUpgradeNmb)) {
+        ////Shoot
+        if (Input.GetMouseButton(0) && actualFireRate >= GetFireRate(GameManager.Instance.ActualStat.FireRateUpgradeNmb + GameManager.Instance.ShipUIData.FireRateUpgradeNmb)) {
             ShootBullet();
+        }
+
+        //Slow Motion
+        if (Input.GetMouseButton(1) && hasReachEnd == false) {
+            UseSlowMotion(true);
+        }
+        else {
+            UseSlowMotion(false);    
         }
     }
 
@@ -110,6 +129,32 @@ public class PlayerManager : MonoBehaviour {
     }
     #endregion Life
 
+    #region SlowMotion
+
+    private void UseSlowMotion(bool useSlowMotion)
+    {
+        switch (useSlowMotion) {
+            case true:
+                Time.timeScale = Mathf.Lerp(Time.timeScale, slowMotionValue, Time.deltaTime * slowMotionForce);
+                slowMotionSlider.fillAmount = Mathf.Clamp(slowMotionSlider.fillAmount - ((Time.deltaTime / slowMotionLength) * 1 / Time.timeScale), 0 , 1);
+                if (slowMotionSlider.fillAmount <= .001f) {
+                    hasReachEnd = true;
+                    slowMotionImg.color = slowMotionColorWhenUsed;
+                }
+                break;
+            case false:
+                Time.timeScale = Mathf.Lerp(Time.timeScale, 1, Time.deltaTime * slowMotionForce);
+                slowMotionSlider.fillAmount = Mathf.Clamp(slowMotionSlider.fillAmount + ((Time.deltaTime / slowMotionLength) * 1 / Time.timeScale), 0 , 1);
+                if (slowMotionSlider.fillAmount >= .99f) {
+                    hasReachEnd = false;
+                    slowMotionImg.color = Color.white;
+                }
+                break;
+        }
+    }
+    
+    #endregion SlowMotion
+    
 #if UNITY_EDITOR
     /// <summary>
     /// Draw data in the scene
