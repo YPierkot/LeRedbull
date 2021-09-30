@@ -9,18 +9,22 @@ public class DamagaValue : MonoBehaviour
     private int dmg = 1;
     public GameObject parent;
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("PBullet"))
-        {
-            HP -= dmg;
+    /// <summary>
+    /// When the ennemy enter in collision with a bullet
+    /// </summary>
+    /// <param name="other"></param>
+    public void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("PlayerBullet")) {
+            HP -= other.GetComponent<BulletPoolBehavior>().Damage;
             Destroy(other.gameObject);
         }
         if (HP <= 0) DestroyEnemy();
     }
 
-    public void DestroyEnemy()
-    {
+    /// <summary>
+    /// Destroy the Ennemy
+    /// </summary>
+    private void DestroyEnemy() {
         Destroy(this.parent.gameObject);
     }
 }

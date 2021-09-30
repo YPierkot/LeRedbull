@@ -28,7 +28,7 @@ public class BaseWeaponSO : ScriptableObject {
     /// <param name="bulletSpawn"></param>
     /// <param name="bulletContainer"></param>
     public virtual void ShootBullet(GameObject player, Transform bulletSpawn, int damageUpgradeNmb, int bulletSizeUpgradeNmb, int bulletSpeedUpgradeNmb) {
-        GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform);
+        GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform, damageUpgradeNmb);
         bulletSpawned.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
         bulletSpawned.GetComponent<Rigidbody>().AddForce(player.transform.forward * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
     }
@@ -39,9 +39,11 @@ public class BaseWeaponSO : ScriptableObject {
     /// <param name="bulletSpawn"></param>
     /// <param name="player"></param>
     /// <returns></returns>
-    protected static GameObject GetBullet(Transform bulletSpawn, Transform player) {
+    protected GameObject GetBullet(Transform bulletSpawn, Transform player, int damageUpgradeNmb) {
         GameObject bullet = EnnemyBulletPoolManager.instance.GetBullet("PlayerBullet", bulletSpawn.position, player.rotation);
         bullet.transform.GetChild(0).GetComponent<TrailRenderer>().Clear();
+        int damageValue = (damage + damage * ((damageUpgradeNmb * 10) / 100));
+        bullet.GetComponent<BulletPoolBehavior>().Init(damageValue);
         return bullet;
     }
     
@@ -62,8 +64,7 @@ public class BaseWeaponSO : ScriptableObject {
     protected float GetBulletSize(int bulletSizeUpgrade) {
         return (bulletStartSize + bulletStartSize * ((bulletSizeUpgrade * 25) / 100));
     }
-    
-    
+
 #if UNITY_EDITOR
     /// <summary>
     /// Draw custom Gizmos based on the class of the weapon

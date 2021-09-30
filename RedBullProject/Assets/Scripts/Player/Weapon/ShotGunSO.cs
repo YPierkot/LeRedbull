@@ -35,7 +35,7 @@ public class ShotGunSO : BaseWeaponSO {
     public override void ShootBullet(GameObject player, Transform bulletSpawn, int damageUpgradeNmb, int bulletSizeUpgradeNmb, int bulletSpeedUpgradeNmb) {
         for (int i = 0; i < numberOfBulletToSpawn; i++) {
             Vector3 direction = GetRandomDirection(player);
-            GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform);
+            GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform, damageUpgradeNmb);
             bulletSpawned.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
             bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
         }

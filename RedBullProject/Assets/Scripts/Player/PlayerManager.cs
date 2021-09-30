@@ -19,7 +19,6 @@ public class PlayerManager : MonoBehaviour {
 
     [Header("Player Shoot")] [SerializeField]
     private BaseWeaponSO actualWeapon;
-    [SerializeField] private Transform bulletContainer = null;
 
     #region privateVariable
     //Rigidbody

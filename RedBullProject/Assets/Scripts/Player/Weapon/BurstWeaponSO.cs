@@ -43,7 +43,7 @@ public class BurstWeaponSO : BaseWeaponSO {
     public override void ShootBullet(GameObject player, Transform bulletSpawn, int damageUpgradeNmb, int bulletSizeUpgradeNmb, int bulletSpeedUpgradeNmb) {
         if (randomShot) {
             Vector3 direction = GetRandomDirection(player);
-            GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform);
+            GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform, damageUpgradeNmb);
             bulletSpawned.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
             bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
         }
@@ -53,7 +53,7 @@ public class BurstWeaponSO : BaseWeaponSO {
             
             for (int i = 0; i < nmbBulletPerShot; i++) {
                 Vector3 direction = GetRotationAngle(startAngle + (i * angleToAdd), player.transform.forward, 1);
-                GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform);
+                GameObject bulletSpawned = GetBullet(bulletSpawn, player.transform, damageUpgradeNmb);
                 bulletSpawned.transform.localScale = new Vector3(GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb), GetBulletSize(bulletSizeUpgradeNmb));
                 bulletSpawned.GetComponent<Rigidbody>().AddForce(direction * GetBulletSpeed(bulletSpeedUpgradeNmb), ForceMode.Impulse);
             }

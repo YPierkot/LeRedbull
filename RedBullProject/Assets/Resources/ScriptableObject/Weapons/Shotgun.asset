@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Shotgun Weapon
   fireRate: 1.5
-  damage: 1
+  damage: 2
   bulletStartSpeed: 0
   bulletStartSize: 0.2
   bulletGam: {fileID: 8072388550839433965, guid: ed87284b3215c2748be90e9a499288c5, type: 3}
