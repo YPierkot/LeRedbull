@@ -16,6 +16,7 @@ MonoBehaviour:
   fireRate: 0.25
   damage: 1
   bulletStartSpeed: 20
+  bulletStartSize: 0.5
   bulletGam: {fileID: 8072388550839433965, guid: ed87284b3215c2748be90e9a499288c5, type: 3}
   bulletDeathTime: 4
   burstAngle: 10
