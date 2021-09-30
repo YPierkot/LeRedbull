@@ -42,7 +42,7 @@ public class BaseWeaponSO : ScriptableObject {
     protected GameObject GetBullet(Transform bulletSpawn, Transform player, int damageUpgradeNmb) {
         GameObject bullet = EnnemyBulletPoolManager.instance.GetBullet("PlayerBullet", bulletSpawn.position, player.rotation);
         bullet.transform.GetChild(0).GetComponent<TrailRenderer>().Clear();
-        int damageValue = (damage + damage * ((damageUpgradeNmb * 10) / 100));
+        float damageValue = (float)(damage + damage * ((damageUpgradeNmb * 10) / 100));
         bullet.GetComponent<BulletPoolBehavior>().Init(damageValue);
         return bullet;
     }
