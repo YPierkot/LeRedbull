@@ -4629,6 +4629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5798e3e9bf622a41816d8660b5d5a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 777670245}
   frameCounter: 0
   refreshTime: 50000
   bossSpawn: {fileID: 997281959}
@@ -12230,8 +12231,9 @@ MonoBehaviour:
   lifeSlider: {fileID: 581202918}
   shootPos: {fileID: 1506431442}
   life: 0
-  maxLife: 10
+  maxLife: 1
   takeDamageAnim: {fileID: 135136246}
+  deathParticle: {fileID: 8233521931958169058, guid: 1c2c3868cea17e345a64ed358c4d319c, type: 3}
   moveSpeed: 25
   actualWeapon: {fileID: 11400000, guid: 591832b67105e5d459be87630e223194, type: 2}
   slowMotionSlider: {fileID: 143007456}

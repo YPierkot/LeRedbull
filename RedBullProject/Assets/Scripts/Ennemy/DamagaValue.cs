@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class DamagaValue : MonoBehaviour {
     public float life = 1;
     public GameObject parent;
     [SerializeField] private string AnimName = "TakeDamageEnnemy";
+
     /// <summary>
     /// When the ennemy enter in collision with a bullet
     /// </summary>

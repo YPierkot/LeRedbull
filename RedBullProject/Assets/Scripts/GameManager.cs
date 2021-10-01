@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public ShipUIData ShipUIData => shipData;
     
     [SerializeField] private PlayerManager playerData = null;
+    public PlayerManager PlayerData => playerData;
     [SerializeField] private WeaponUiData actualStat = null;
     public WeaponUiData ActualStat => actualStat;
     

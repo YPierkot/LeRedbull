@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.LWRP;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour {
@@ -17,6 +18,7 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private int life = 0;
     [SerializeField] private int maxLife = 0;
     [SerializeField] private Animator takeDamageAnim = null;
+    [SerializeField] private GameObject deathParticle = null;
     
     [Header("Player Movement")] 
     [SerializeField] private float moveSpeed = 0;
@@ -81,13 +83,15 @@ public class PlayerManager : MonoBehaviour {
         GetInputs();
         actualFireRate += Time.deltaTime;
         ////Shoot
-        if (Input.GetMouseButton(0) && actualFireRate >= GetFireRate(GameManager.Instance.ActualStat.FireRateUpgradeNmb + GameManager.Instance.ShipUIData.FireRateUpgradeNmb)) {
+        if (Input.GetMouseButton(0) && actualFireRate >= GetFireRate(GameManager.Instance.ActualStat.FireRateUpgradeNmb + GameManager.Instance.ShipUIData.FireRateUpgradeNmb) && playerGam != null) {
             ShootBullet();
         }
 
         //Pause
-        Pause();
-        
+        if(playerGam != null) Pause();
+        else {
+            if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("YOP_Scene");
+        }
         //Slow Motion
         if (Input.GetMouseButton(1) && hasReachEnd == false) {
             UseSlowMotion(true);
@@ -150,6 +154,7 @@ public class PlayerManager : MonoBehaviour {
     /// Move the rigidbody
     /// </summary>
     private void FixedUpdate() {
+        if (playerGam == null) return;
        if(moveDirectionRaw != Vector3.zero) playerRig.velocity = moveDirection * (moveSpeed + moveSpeed * (GameManager.Instance.ShipUIData.MoveSpeedUpgradeNmb * 10) / 100);
     }
 
@@ -205,6 +210,10 @@ public class PlayerManager : MonoBehaviour {
         life -= damagePerBullet;
         takeDamageAnim.Play("TakeDamage");
         UpdateSlider();
+
+        if (life <= 0) {
+            PlayerDeath();
+        }
     }
 
     /// <summary>
@@ -213,6 +222,12 @@ public class PlayerManager : MonoBehaviour {
     private void UpdateSlider() {
         lifeSlider.fillAmount = (float)life / maxLife;
     }
+
+    private void PlayerDeath() {
+        Instantiate(deathParticle, playerGam.transform.position, deathParticle.transform.rotation);
+        Destroy(playerGam);
+    }
+    
     #endregion Life
 
     #region SlowMotion
