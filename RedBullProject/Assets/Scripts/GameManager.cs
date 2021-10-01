@@ -84,13 +84,31 @@ public class GameManager : MonoBehaviour
             actualStat.ChangeWeaponColor(false);
             actualStat.EffectAnim.SetBool("PlayAnim", false);
         }
-        
-        if (Input.GetKeyDown(KeyCode.Alpha1)&& contractGamList[0].IsActivAtStart) actualStat = contractGamList[0];
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && contractGamList[1].IsActivAtStart) actualStat = contractGamList[1];
-        else if (Input.GetKeyDown(KeyCode.Alpha3)&& contractGamList[2].IsActivAtStart) actualStat = contractGamList[2];
-        else if (Input.GetKeyDown(KeyCode.Alpha4)&& contractGamList[3].IsActivAtStart) actualStat = contractGamList[3];
-        else if (Input.GetKeyDown(KeyCode.Alpha5)&& contractGamList[4].IsActivAtStart) actualStat = contractGamList[4];
-        else if (Input.GetKeyDown(KeyCode.Alpha6)&& contractGamList[5].IsActivAtStart) actualStat = contractGamList[5];
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            if(contractGamList[0].IsActivAtStart) actualStat = contractGamList[0];
+            else StartContract(contractGamList[0]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            if(contractGamList[1].IsActivAtStart) actualStat = contractGamList[1];
+            else StartContract(contractGamList[1]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            if(contractGamList[2].IsActivAtStart) actualStat = contractGamList[2];
+            else StartContract(contractGamList[2]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            if(contractGamList[3].IsActivAtStart) actualStat = contractGamList[3];
+            else StartContract(contractGamList[3]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            if(contractGamList[4].IsActivAtStart) actualStat = contractGamList[4];
+            else StartContract(contractGamList[4]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+            if(contractGamList[5].IsActivAtStart) actualStat = contractGamList[5];
+            else StartContract(contractGamList[5]);
+        }
 
         playerData.ChangeActualWeapon(actualStat.Weapon);
         actualStat.ChangeWeaponColor(true);

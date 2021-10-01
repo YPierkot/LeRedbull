@@ -4735,6 +4735,13 @@ MonoBehaviour:
     timeBeforeDestroy: 11
     flip: 1
     isBoss: 0
+  - name: Wait
+    frame: 1750
+    prefab: {fileID: 0}
+    spawnPoint: 0
+    timeBeforeDestroy: 0
+    flip: 0
+    isBoss: 1
   - name: FirstBoss
     frame: 1800
     prefab: {fileID: 6486403610003472092, guid: 9da19bfa8852bad498fe72471cffb420, type: 3}
@@ -4742,11 +4749,165 @@ MonoBehaviour:
     timeBeforeDestroy: 5000
     flip: 0
     isBoss: 1
-  - name: SizeDoesMatter
+  - name: Speedy
     frame: 2000
+    prefab: {fileID: 8760872667055224682, guid: 658e57db2933fcb49b7483295ce92e0b, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 10
+    flip: 0
+    isBoss: 0
+  - name: Speedy
+    frame: 2000
+    prefab: {fileID: 8760872667055224682, guid: 658e57db2933fcb49b7483295ce92e0b, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 10
+    flip: 0
+    isBoss: 0
+  - name: Speedy
+    frame: 2100
+    prefab: {fileID: 8760872667055224682, guid: 658e57db2933fcb49b7483295ce92e0b, type: 3}
+    spawnPoint: 2
+    timeBeforeDestroy: 10
+    flip: 0
+    isBoss: 0
+  - name: Speedy
+    frame: 2200
+    prefab: {fileID: 8760872667055224682, guid: 658e57db2933fcb49b7483295ce92e0b, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 10
+    flip: 0
+    isBoss: 0
+  - name: Speedy
+    frame: 2200
+    prefab: {fileID: 8760872667055224682, guid: 658e57db2933fcb49b7483295ce92e0b, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 10
+    flip: 0
+    isBoss: 0
+  - name: Spining
+    frame: 2400
+    prefab: {fileID: 7184994898129677240, guid: 82ce18bdae7e71b4f8a4c077ffc76766, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 15
+    flip: 1
+    isBoss: 0
+  - name: Spining
+    frame: 2400
+    prefab: {fileID: 5327384738006709433, guid: dd9f06a99e0ec434ebce52e0d501fa89, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 15
+    flip: 0
+    isBoss: 0
+  - name: Spining
+    frame: 2650
+    prefab: {fileID: 5327384738006709433, guid: dd9f06a99e0ec434ebce52e0d501fa89, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 15
+    flip: 0
+    isBoss: 0
+  - name: Spining
+    frame: 2650
+    prefab: {fileID: 7184994898129677240, guid: 82ce18bdae7e71b4f8a4c077ffc76766, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 15
+    flip: 1
+    isBoss: 0
+  - name: LeftSimpleStraightDescending
+    frame: 2900
+    prefab: {fileID: 6258968976460791607, guid: 544040fd686743441bf6e4cbf3808709, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: RightSimpleStraightDescending
+    frame: 3000
+    prefab: {fileID: 7256459150661429905, guid: 0edcd7e04d4cea84da758d0192910a5d, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: LeftSimpleStraightDescending
+    frame: 3100
+    prefab: {fileID: 6258968976460791607, guid: 544040fd686743441bf6e4cbf3808709, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: RightSimpleStraightDescending
+    frame: 3200
+    prefab: {fileID: 7256459150661429905, guid: 0edcd7e04d4cea84da758d0192910a5d, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: LeftSimpleStraightDescending
+    frame: 3300
+    prefab: {fileID: 6258968976460791607, guid: 544040fd686743441bf6e4cbf3808709, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: RightSimpleStraightDescending
+    frame: 3400
+    prefab: {fileID: 7256459150661429905, guid: 0edcd7e04d4cea84da758d0192910a5d, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: LeftSimpleStraightDescending
+    frame: 3500
+    prefab: {fileID: 6258968976460791607, guid: 544040fd686743441bf6e4cbf3808709, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: RightSimpleStraightDescending
+    frame: 3600
+    prefab: {fileID: 7256459150661429905, guid: 0edcd7e04d4cea84da758d0192910a5d, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: LeftSimpleStraightDescending
+    frame: 3700
+    prefab: {fileID: 6258968976460791607, guid: 544040fd686743441bf6e4cbf3808709, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 13
+    flip: 0
+    isBoss: 0
+  - name: WaitPos
+    frame: 7150
+    prefab: {fileID: 0}
+    spawnPoint: 0
+    timeBeforeDestroy: 50000
+    flip: 0
+    isBoss: 1
+  - name: SemiBoss
+    frame: 4200
+    prefab: {fileID: 8212594945162804255, guid: bff0fa0e087eb604889039ff71398efb, type: 3}
+    spawnPoint: 3
+    timeBeforeDestroy: 2000
+    flip: 0
+    isBoss: 0
+  - name: SemiBoss
+    frame: 4200
+    prefab: {fileID: 8212594945162804255, guid: bff0fa0e087eb604889039ff71398efb, type: 3}
+    spawnPoint: 1
+    timeBeforeDestroy: 2000
+    flip: 0
+    isBoss: 0
+  - name: Boss
+    frame: 5500
+    prefab: {fileID: 0}
+    spawnPoint: 0
+    timeBeforeDestroy: 0
+    flip: 0
+    isBoss: 1
+  - name: Boss
+    frame: 7200
     prefab: {fileID: 2876666603700247038, guid: b3be28defc4f7c14da9484ab27224e5e, type: 3}
     spawnPoint: 0
-    timeBeforeDestroy: 5000
+    timeBeforeDestroy: 50000
     flip: 0
     isBoss: 1
   alertCanvas: {fileID: 524754699}
@@ -6357,7 +6518,7 @@ Transform:
   m_GameObject: {fileID: 777670245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1506431442}
   - {fileID: 518770901}
@@ -12231,7 +12392,7 @@ MonoBehaviour:
   lifeSlider: {fileID: 581202918}
   shootPos: {fileID: 1506431442}
   life: 0
-  maxLife: 1
+  maxLife: 10
   takeDamageAnim: {fileID: 135136246}
   deathParticle: {fileID: 8233521931958169058, guid: 1c2c3868cea17e345a64ed358c4d319c, type: 3}
   moveSpeed: 25
