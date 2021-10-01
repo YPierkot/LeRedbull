@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 115417849565435316}
   - component: {fileID: 2173538814893163784}
   - component: {fileID: 7519780941535611536}
+  - component: {fileID: 6497542025717745377}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -273,6 +274,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   parent: {fileID: 8760872667055224682}
+  AnimName: TakeDamageEnnemy
+--- !u!95 &6497542025717745377
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7588170823147805004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28f3854be67f2fc4687f7fe90fd1face, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8760872667055224682
 GameObject:
   m_ObjectHideFlags: 0
