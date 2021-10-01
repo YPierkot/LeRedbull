@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class WeaponUiData : MonoBehaviour {
@@ -71,7 +73,26 @@ public class WeaponUiData : MonoBehaviour {
         upgradeText[3].text = "+" + bulletSizeUpgreadeNmb * 10 + "%";
         openStatButtonPanel.SetActive(isActivAtStart);
     }
-    
+
+    private void Update() {
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
+            bool wasOpen = false;
+            foreach (WeaponUiData weapon in GameManager.Instance.ContractGamList) {
+                if (weapon.statPanel.activeSelf) {
+                    weapon.ClosePanel();
+                    wasOpen = true;
+                }
+            }
+
+            if (GameManager.Instance.ShipUIData.StatPanel.activeSelf) {
+                GameManager.Instance.ShipUIData.ClosePanel();
+                wasOpen = true;
+            }
+            
+            if(wasOpen) cameraAnim.Play("MoveCameraForGameplay");
+        }
+    }
+
 #if UNITY_EDITOR    
     /// <summary>
     /// When variable change
@@ -144,14 +165,14 @@ public class WeaponUiData : MonoBehaviour {
         switch (wasOpen) {
             case true when statPanel.activeSelf:
             case false when statPanel.activeSelf:
-                cameraAnim.Play("MoveCameraForGameplay");
+                if (Time.timeScale != 0)  cameraAnim.Play("MoveCameraForGameplay");
                 ClosePanel();
                 break;
             case true when !statPanel.activeSelf:
                 OpenPanel();
                 break;
             case false when !statPanel.activeSelf:
-                cameraAnim.Play("MoveCameraForUI");
+                if (Time.timeScale != 0)  cameraAnim.Play("MoveCameraForUI");
                 OpenPanel();
                 break;
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.LWRP;
 using UnityEngine.UI;
 
@@ -33,6 +34,8 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private GameObject slowMotionEffect = null;
     [SerializeField] private GameObject fastMotionEffect = null;
     [SerializeField] private bool hasStartSlowMotion = false;
+    [SerializeField] private AudioSource backgroundSound = null;
+    [SerializeField] private Volume slowMotVolume = null;
 
     #region privateVariable
     //Rigidbody
@@ -44,8 +47,19 @@ public class PlayerManager : MonoBehaviour {
     //Shoot Data
     private float actualFireRate = 0;
     private bool hasReachEnd;
-    
+
+    [Header("Pause")]
+    [SerializeField] private Camera UICam = null;
+    [SerializeField] private Camera BaseCam = null;
+    [SerializeField] private Camera BaseUICam = null;
+    [SerializeField] private Canvas statCanvas = null;
+    [SerializeField] private Animator cameraAnim = null;
+    private float timeScaleBeforePause = 0;
+    private bool pause = false;
+
     #endregion PrivateVariable
+    
+
     
     #endregion Variables
     
@@ -56,6 +70,11 @@ public class PlayerManager : MonoBehaviour {
         life = maxLife; 
         playerRig = playerGam.GetComponent<Rigidbody>();
         UpdateSlider();
+        
+        UICam.enabled = false;
+        BaseCam.enabled = true;
+        BaseUICam.enabled = true;
+        statCanvas.worldCamera = BaseCam;
     }
 
     private void Update() {
@@ -66,6 +85,41 @@ public class PlayerManager : MonoBehaviour {
             ShootBullet();
         }
 
+        //Pause
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (!pause) {
+                cameraAnim.Play("MoveCameraForGameplay");
+                UICam.enabled = true;
+                BaseCam.enabled = false;
+                BaseUICam.enabled = false;
+                statCanvas.worldCamera = UICam;
+                
+                timeScaleBeforePause = Time.timeScale;
+                Time.timeScale = 0;
+                pause = true;
+            }
+            else {
+                UICam.enabled = false;
+                BaseCam.enabled = true;
+                BaseUICam.enabled = true;
+                statCanvas.worldCamera = BaseCam;
+                
+                foreach (WeaponUiData weapon in GameManager.Instance.ContractGamList) {
+                    if (weapon.StatPanel.activeSelf) {
+                        weapon.ClosePanel();
+                    }
+                }
+
+                if (GameManager.Instance.ShipUIData.StatPanel.activeSelf) {
+                    GameManager.Instance.ShipUIData.ClosePanel();
+                }
+                
+                Time.timeScale = timeScaleBeforePause;
+                pause = false;
+            }
+        }
+        
+        
         //Slow Motion
         if (Input.GetMouseButton(1) && hasReachEnd == false) {
             UseSlowMotion(true);
@@ -75,12 +129,14 @@ public class PlayerManager : MonoBehaviour {
             }
         }
         else {
-            UseSlowMotion(false);
+            if(pause != true) UseSlowMotion(false);
         }
 
         if (Input.GetMouseButtonUp(1)) {
             hasStartSlowMotion = false;
-            if(!hasReachEnd) Instantiate(fastMotionEffect);
+            if (!hasReachEnd) {
+                Instantiate(fastMotionEffect);
+            }
         }
     }
 
@@ -176,6 +232,9 @@ public class PlayerManager : MonoBehaviour {
                 }
                 break;
         }
+        float value = Time.timeScale;
+        slowMotVolume.weight = 1 - value;
+        backgroundSound.pitch = Mathf.Clamp(value, .5f, 1);
     }
     
     #endregion SlowMotion

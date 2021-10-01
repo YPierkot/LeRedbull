@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public int BasicRessourceNumber => basicRessourceNumber;
     public int ComplexRessourceNumber => complexRessourceNumber;
 
+    
     [Header("Other")] 
     [SerializeField] private GameObject damageText = null;
     public GameObject DamageText => damageText;
@@ -46,7 +47,11 @@ public class GameManager : MonoBehaviour
     public GameObject DamageEffect => damageEffect;
     [SerializeField] private GameObject deathEffect = null;
     public GameObject DeathEffect => deathEffect;
-
+    [SerializeField] private AudioSource soundGam = null;
+    public AudioSource SoundGam => soundGam;
+    [SerializeField] private AudioClip takeDamageSound = null;
+    [SerializeField] private AudioClip slowMoSound = null;
+    
     private void Start() {
         ChangeContractState(true);
         ChangeWeapon(0);
@@ -61,7 +66,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.M)) {
             UseResourcesFromShoot();
         }
-
+        
         ChangeWeapon();
     }
 
@@ -155,11 +160,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="value"></param>
     /// <param name="basicRessource"></param>
-    public void AddBasicRessource(int randomValue) {
-        int random = Random.Range(0, 100);
-        if (randomValue >= random) {
+    public void AddBasicRessource() {
+        if (Random.Range(0, 100) <= 75) {
             basicRessourceNumber += 1;
-            UpdateRessourceValue(); 
+            UpdateRessourceValue();
         }
     }
     
@@ -211,4 +215,11 @@ public class GameManager : MonoBehaviour
     
     #endregion Ressources
     
+    #region Sound
+
+    public void EnnemyTakeDamageSound() => soundGam.PlayOneShot(takeDamageSound);
+    public void SlowMotionSound() => soundGam.PlayOneShot(slowMoSound);
+
+    #endregion Sound
+
 }
