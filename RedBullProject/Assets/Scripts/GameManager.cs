@@ -210,8 +210,8 @@ public class GameManager : MonoBehaviour
     /// Update the text of the Ressources
     /// </summary>
     private void UpdateRessourceValue() {
-        basicRessourceTxt.text = "Resource : " + basicRessourceNumber;
-        complexRessourceTxt.text = "Complex Resource : " + complexRessourceNumber;
+        basicRessourceTxt.text = basicRessourceNumber.ToString();
+        complexRessourceTxt.text = complexRessourceNumber.ToString();
         
         foreach (WeaponUiData weapon in contractGamList) {
             weapon.UpdateButtonRessource(basicRessourceNumber);

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.LWRP;
@@ -84,7 +85,7 @@ public class PlayerManager : MonoBehaviour {
         actualFireRate += Time.deltaTime;
         ////Shoot
         if (Input.GetMouseButton(0) && actualFireRate >= GetFireRate(GameManager.Instance.ActualStat.FireRateUpgradeNmb + GameManager.Instance.ShipUIData.FireRateUpgradeNmb) && playerGam != null) {
-            ShootBullet();
+            if(!EventSystem.current.IsPointerOverGameObject()) ShootBullet();
         }
 
         //Pause
