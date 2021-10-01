@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TriShot
   m_EditorClassIdentifier: 
   weaponName: ThreeShot Burst
-  fireRate: 1
-  damage: 1
+  fireRate: 0.6
+  damage: 150
   bulletStartSpeed: 20
   bulletStartSize: 0.5
   bulletGam: {fileID: 8072388550839433965, guid: ed87284b3215c2748be90e9a499288c5, type: 3}

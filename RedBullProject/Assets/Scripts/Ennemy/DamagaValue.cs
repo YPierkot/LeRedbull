@@ -6,7 +6,7 @@ using Unity.Mathematics;
 using UnityEngine;
 
 public class DamagaValue : MonoBehaviour {
-    public int life = 1;
+    public float life = 1;
     public GameObject parent;
 
     /// <summary>
