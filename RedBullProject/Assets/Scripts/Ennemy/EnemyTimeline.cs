@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnemyTimeline : MonoBehaviour
 {
-    public int frameCounter;
+    public float frameCounter;
     public float refreshTime;
 
     public Transform bossSpawn;
@@ -19,14 +19,34 @@ public class EnemyTimeline : MonoBehaviour
     
     public List<EnemySlot> enemySlots = new List<EnemySlot>();
 
-    
-    private void FixedUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) && hasSpawnBoss) hasSpawnBoss = false;
+    [SerializeField] private Animator alertCanvas = null;
+    private bool hasSpawnAlert = false;
+
+    private void Start() {
+        alertCanvas.gameObject.GetComponent<CanvasGroup>().alpha = 0;
+    }
+
+    IEnumerator waitForAlert(float time) {
+        hasSpawnAlert = true;
+        yield return new WaitForSeconds(time);
+        alertCanvas.Play("GetCanvasAlpha");
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Return) && hasSpawnBoss && boss == null) {
+            alertCanvas.Play("changeCanvasAlpha");
+            hasSpawnBoss = false;
+            hasSpawnAlert = false;
+        }
+        
+        if (hasSpawnBoss && boss == null && !hasSpawnAlert) StartCoroutine(waitForAlert(1.5f));  
+    }
+
+    private void FixedUpdate() {
         
         if (frameCounter < refreshTime && boss == null && !hasSpawnBoss)
         {
-            frameCounter++;
+            frameCounter += 0.25f;
         }
         else if (frameCounter >= refreshTime && boss == null && !hasSpawnBoss)
         {
@@ -40,7 +60,12 @@ public class EnemyTimeline : MonoBehaviour
                 switch (enemySlots[i].spawnPoint)
                 {
                     case SpawnPoint.BossSpawn:
-                        InstantiateBoss(enemySlots[i].prefab, enemySlots[i]); 
+                        if (enemySlots[i].prefab != null) InstantiateBoss(enemySlots[i].prefab, enemySlots[i]);
+                        else {
+                            StartCoroutine(waitForAlert(0.25f));
+                            hasSpawnBoss = true;
+                            frameCounter += 0.25f;
+                        }
                         break;
                     case SpawnPoint.LeftSpawn:
                         InstantiateLeft(enemySlots[i].prefab, enemySlots[i]); 

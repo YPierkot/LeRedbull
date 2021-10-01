@@ -39,10 +39,10 @@ public class BaseWeaponSO : ScriptableObject {
     /// <param name="bulletSpawn"></param>
     /// <param name="player"></param>
     /// <returns></returns>
-    protected GameObject GetBullet(Transform bulletSpawn, Transform player, int damageUpgradeNmb) {
-        GameObject bullet = EnnemyBulletPoolManager.instance.GetBullet("PlayerBullet", bulletSpawn.position, player.rotation);
+    protected GameObject GetBullet(Transform bulletSpawn, Transform player, int damageUpgradeNmb, float AddXPos = 0f) {
+        GameObject bullet = EnnemyBulletPoolManager.instance.GetBullet("PlayerBullet", bulletSpawn.position + new Vector3(AddXPos, 0, 0), player.rotation);
         bullet.transform.GetChild(0).GetComponent<TrailRenderer>().Clear();
-        int damageValue = (damage + damage * ((damageUpgradeNmb * 10) / 100));
+        float damageValue = (float)(damage + damage * ((damageUpgradeNmb * 10) / 100));
         bullet.GetComponent<BulletPoolBehavior>().Init(damageValue);
         return bullet;
     }
@@ -75,4 +75,4 @@ public class BaseWeaponSO : ScriptableObject {
         Gizmos.DrawLine(bulletSpawn.position, player.forward * 10 + bulletSpawn.position);
     }
 #endif
-}
+} 

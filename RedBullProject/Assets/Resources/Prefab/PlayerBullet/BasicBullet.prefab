@@ -265,4 +265,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletName: 
-  waitForDestruction: 50
+  waitForDestruction: 10
+  damage: 0

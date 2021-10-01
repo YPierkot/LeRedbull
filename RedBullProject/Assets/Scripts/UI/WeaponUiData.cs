@@ -60,6 +60,7 @@ public class WeaponUiData : MonoBehaviour {
     [SerializeField] private List<TextMeshProUGUI> upgradeText = new List<TextMeshProUGUI>();
     public List<Ressource> RessourceList => ressourceList;
     
+    [SerializeField] private Animator cameraAnim;
     #endregion Variables
 
     private void Start() {
@@ -102,6 +103,9 @@ public class WeaponUiData : MonoBehaviour {
                 actualEnnemyKill = 0;
                 iconImage.sprite = objectSprite;
             }
+            else {
+                GameManager.Instance.AddComplexResource(1);
+            }
             UpdateSliderVisual();
             
             isActivAtStart = true;
@@ -123,16 +127,44 @@ public class WeaponUiData : MonoBehaviour {
     /// <summary>
     /// Open or Close the upgradePanel
     /// </summary>
-    public void ChangePanelStatState(bool forceOpen) {
-        if (!forceOpen) {
-            foreach (WeaponUiData weapon in GameManager.Instance.ContractGamList) {
-                if (weapon.statPanel.activeSelf && weapon.statPanel != statPanel) weapon.ChangePanelStatState(true);
+    public void ChangePanelStatState() {
+        bool wasOpen = false; 
+        foreach (WeaponUiData weapon in GameManager.Instance.ContractGamList) {
+            if (weapon.statPanel.activeSelf && weapon.statPanel != statPanel) {
+                weapon.ClosePanel();
+                wasOpen = true;
             }
-            if(GameManager.Instance.ShipUIData.StatPanel.activeSelf) GameManager.Instance.ShipUIData.ChangePanelStatState(true);
         }
 
-        StatPanel.SetActive(!StatPanel.activeSelf);
-        openStatButton.gameObject.transform.localRotation = statPanel.activeSelf ? Quaternion.Euler(0,0,180) : Quaternion.Euler(0,0,0);
+        if (GameManager.Instance.ShipUIData.StatPanel.activeSelf) {
+            GameManager.Instance.ShipUIData.ClosePanel();
+            wasOpen = true;
+        }
+        
+        switch (wasOpen) {
+            case true when statPanel.activeSelf:
+            case false when statPanel.activeSelf:
+                cameraAnim.Play("MoveCameraForGameplay");
+                ClosePanel();
+                break;
+            case true when !statPanel.activeSelf:
+                OpenPanel();
+                break;
+            case false when !statPanel.activeSelf:
+                cameraAnim.Play("MoveCameraForUI");
+                OpenPanel();
+                break;
+        }
+    }
+
+    public void ClosePanel() {
+        StatPanel.SetActive(false);
+        openStatButton.gameObject.transform.localRotation = Quaternion.Euler(0, -180, 180);
+    }
+
+    private void OpenPanel() {
+        StatPanel.SetActive(true);
+        openStatButton.gameObject.transform.localRotation = Quaternion.Euler(0, -180, 0);
     }
     #endregion Contract
 
