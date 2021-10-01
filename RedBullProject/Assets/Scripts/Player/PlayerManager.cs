@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.LWRP;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour {
@@ -16,6 +19,7 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private int life = 0;
     [SerializeField] private int maxLife = 0;
     [SerializeField] private Animator takeDamageAnim = null;
+    [SerializeField] private GameObject deathParticle = null;
     
     [Header("Player Movement")] 
     [SerializeField] private float moveSpeed = 0;
@@ -33,6 +37,8 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private GameObject slowMotionEffect = null;
     [SerializeField] private GameObject fastMotionEffect = null;
     [SerializeField] private bool hasStartSlowMotion = false;
+    [SerializeField] private AudioSource backgroundSound = null;
+    [SerializeField] private Volume slowMotVolume = null;
 
     #region privateVariable
     //Rigidbody
@@ -44,8 +50,19 @@ public class PlayerManager : MonoBehaviour {
     //Shoot Data
     private float actualFireRate = 0;
     private bool hasReachEnd;
-    
+
+    [Header("Pause")]
+    [SerializeField] private Camera UICam = null;
+    [SerializeField] private Camera BaseCam = null;
+    [SerializeField] private Camera BaseUICam = null;
+    [SerializeField] private Canvas statCanvas = null;
+    [SerializeField] private Animator cameraAnim = null;
+    private float timeScaleBeforePause = 0;
+    private bool pause = false;
+
     #endregion PrivateVariable
+    
+
     
     #endregion Variables
     
@@ -56,16 +73,26 @@ public class PlayerManager : MonoBehaviour {
         life = maxLife; 
         playerRig = playerGam.GetComponent<Rigidbody>();
         UpdateSlider();
+        
+        UICam.enabled = false;
+        BaseCam.enabled = true;
+        BaseUICam.enabled = true;
+        statCanvas.worldCamera = BaseCam;
     }
 
     private void Update() {
         GetInputs();
         actualFireRate += Time.deltaTime;
         ////Shoot
-        if (Input.GetMouseButton(0) && actualFireRate >= GetFireRate(GameManager.Instance.ActualStat.FireRateUpgradeNmb + GameManager.Instance.ShipUIData.FireRateUpgradeNmb)) {
-            ShootBullet();
+        if (Input.GetMouseButton(0) && actualFireRate >= GetFireRate(GameManager.Instance.ActualStat.FireRateUpgradeNmb + GameManager.Instance.ShipUIData.FireRateUpgradeNmb) && playerGam != null) {
+            if(!EventSystem.current.IsPointerOverGameObject()) ShootBullet();
         }
 
+        //Pause
+        if(playerGam != null) Pause();
+        else {
+            if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("YOP_Scene");
+        }
         //Slow Motion
         if (Input.GetMouseButton(1) && hasReachEnd == false) {
             UseSlowMotion(true);
@@ -75,19 +102,60 @@ public class PlayerManager : MonoBehaviour {
             }
         }
         else {
-            UseSlowMotion(false);
+            if(pause != true) UseSlowMotion(false);
         }
 
         if (Input.GetMouseButtonUp(1)) {
             hasStartSlowMotion = false;
-            if(!hasReachEnd) Instantiate(fastMotionEffect);
+            if (!hasReachEnd) {
+                Instantiate(fastMotionEffect);
+            }
         }
     }
+    
+    /// <summary>
+    /// Pause or UnPause 
+    /// </summary>
+    private void Pause() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (!pause) {
+                cameraAnim.Play("MoveCameraForGameplay");
+                UICam.enabled = true;
+                BaseCam.enabled = false;
+                BaseUICam.enabled = false;
+                statCanvas.worldCamera = UICam;
+                
+                timeScaleBeforePause = Time.timeScale;
+                Time.timeScale = 0;
+                pause = true;
+            }
+            else {
+                UICam.enabled = false;
+                BaseCam.enabled = true;
+                BaseUICam.enabled = true;
+                statCanvas.worldCamera = BaseCam;
+                
+                foreach (WeaponUiData weapon in GameManager.Instance.ContractGamList) {
+                    if (weapon.StatPanel.activeSelf) {
+                        weapon.ClosePanel();
+                    }
+                }
 
+                if (GameManager.Instance.ShipUIData.StatPanel.activeSelf) {
+                    GameManager.Instance.ShipUIData.ClosePanel();
+                }
+                
+                Time.timeScale = timeScaleBeforePause;
+                pause = false;
+            }
+        }
+    }
+    
     /// <summary>
     /// Move the rigidbody
     /// </summary>
     private void FixedUpdate() {
+        if (playerGam == null) return;
        if(moveDirectionRaw != Vector3.zero) playerRig.velocity = moveDirection * (moveSpeed + moveSpeed * (GameManager.Instance.ShipUIData.MoveSpeedUpgradeNmb * 10) / 100);
     }
 
@@ -143,6 +211,10 @@ public class PlayerManager : MonoBehaviour {
         life -= damagePerBullet;
         takeDamageAnim.Play("TakeDamage");
         UpdateSlider();
+
+        if (life <= 0) {
+            PlayerDeath();
+        }
     }
 
     /// <summary>
@@ -151,6 +223,12 @@ public class PlayerManager : MonoBehaviour {
     private void UpdateSlider() {
         lifeSlider.fillAmount = (float)life / maxLife;
     }
+
+    private void PlayerDeath() {
+        Instantiate(deathParticle, playerGam.transform.position, deathParticle.transform.rotation);
+        Destroy(playerGam);
+    }
+    
     #endregion Life
 
     #region SlowMotion
@@ -176,6 +254,9 @@ public class PlayerManager : MonoBehaviour {
                 }
                 break;
         }
+        float value = Time.timeScale;
+        slowMotVolume.weight = 1 - value;
+        backgroundSound.pitch = Mathf.Clamp(value, .5f, 1);
     }
     
     #endregion SlowMotion

@@ -184,6 +184,7 @@ public class RandomFire
     public float speedRandom;
     public float bulletSpeed;
     public float bulletSizeFactor;
+    public bool kamikaze; 
 }
 
 [Serializable]

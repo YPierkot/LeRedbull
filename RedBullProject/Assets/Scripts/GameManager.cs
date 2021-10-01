@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public ShipUIData ShipUIData => shipData;
     
     [SerializeField] private PlayerManager playerData = null;
+    public PlayerManager PlayerData => playerData;
     [SerializeField] private WeaponUiData actualStat = null;
     public WeaponUiData ActualStat => actualStat;
     
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
     public int BasicRessourceNumber => basicRessourceNumber;
     public int ComplexRessourceNumber => complexRessourceNumber;
 
+    
     [Header("Other")] 
     [SerializeField] private GameObject damageText = null;
     public GameObject DamageText => damageText;
@@ -46,7 +48,11 @@ public class GameManager : MonoBehaviour
     public GameObject DamageEffect => damageEffect;
     [SerializeField] private GameObject deathEffect = null;
     public GameObject DeathEffect => deathEffect;
-
+    [SerializeField] private AudioSource soundGam = null;
+    public AudioSource SoundGam => soundGam;
+    [SerializeField] private AudioClip takeDamageSound = null;
+    [SerializeField] private AudioClip slowMoSound = null;
+    
     private void Start() {
         ChangeContractState(true);
         ChangeWeapon(0);
@@ -61,7 +67,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.M)) {
             UseResourcesFromShoot();
         }
-
+        
         ChangeWeapon();
     }
 
@@ -78,13 +84,31 @@ public class GameManager : MonoBehaviour
             actualStat.ChangeWeaponColor(false);
             actualStat.EffectAnim.SetBool("PlayAnim", false);
         }
-        
-        if (Input.GetKeyDown(KeyCode.Alpha1)&& contractGamList[0].IsActivAtStart) actualStat = contractGamList[0];
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && contractGamList[1].IsActivAtStart) actualStat = contractGamList[1];
-        else if (Input.GetKeyDown(KeyCode.Alpha3)&& contractGamList[2].IsActivAtStart) actualStat = contractGamList[2];
-        else if (Input.GetKeyDown(KeyCode.Alpha4)&& contractGamList[3].IsActivAtStart) actualStat = contractGamList[3];
-        else if (Input.GetKeyDown(KeyCode.Alpha5)&& contractGamList[4].IsActivAtStart) actualStat = contractGamList[4];
-        else if (Input.GetKeyDown(KeyCode.Alpha6)&& contractGamList[5].IsActivAtStart) actualStat = contractGamList[5];
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            if(contractGamList[0].IsActivAtStart) actualStat = contractGamList[0];
+            else StartContract(contractGamList[0]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            if(contractGamList[1].IsActivAtStart) actualStat = contractGamList[1];
+            else StartContract(contractGamList[1]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            if(contractGamList[2].IsActivAtStart) actualStat = contractGamList[2];
+            else StartContract(contractGamList[2]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            if(contractGamList[3].IsActivAtStart) actualStat = contractGamList[3];
+            else StartContract(contractGamList[3]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            if(contractGamList[4].IsActivAtStart) actualStat = contractGamList[4];
+            else StartContract(contractGamList[4]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+            if(contractGamList[5].IsActivAtStart) actualStat = contractGamList[5];
+            else StartContract(contractGamList[5]);
+        }
 
         playerData.ChangeActualWeapon(actualStat.Weapon);
         actualStat.ChangeWeaponColor(true);
@@ -155,11 +179,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="value"></param>
     /// <param name="basicRessource"></param>
-    public void AddBasicRessource(int randomValue) {
-        int random = Random.Range(0, 100);
-        if (randomValue >= random) {
+    public void AddBasicRessource() {
+        if (Random.Range(0, 100) <= 75) {
             basicRessourceNumber += 1;
-            UpdateRessourceValue(); 
+            UpdateRessourceValue();
         }
     }
     
@@ -187,8 +210,8 @@ public class GameManager : MonoBehaviour
     /// Update the text of the Ressources
     /// </summary>
     private void UpdateRessourceValue() {
-        basicRessourceTxt.text = "Resource : " + basicRessourceNumber;
-        complexRessourceTxt.text = "Complex Resource : " + complexRessourceNumber;
+        basicRessourceTxt.text = basicRessourceNumber.ToString();
+        complexRessourceTxt.text = complexRessourceNumber.ToString();
         
         foreach (WeaponUiData weapon in contractGamList) {
             weapon.UpdateButtonRessource(basicRessourceNumber);
@@ -211,4 +234,11 @@ public class GameManager : MonoBehaviour
     
     #endregion Ressources
     
+    #region Sound
+
+    public void EnnemyTakeDamageSound() => soundGam.PlayOneShot(takeDamageSound);
+    public void SlowMotionSound() => soundGam.PlayOneShot(slowMoSound);
+
+    #endregion Sound
+
 }

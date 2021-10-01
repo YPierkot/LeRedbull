@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class EnemyTimeline : MonoBehaviour
 {
+    public GameObject player;
+    
     public float frameCounter;
     public float refreshTime;
 
@@ -43,9 +45,9 @@ public class EnemyTimeline : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        if (player == null) return;
         
-        if (frameCounter < refreshTime && boss == null && !hasSpawnBoss)
-        {
+        if (frameCounter < refreshTime && boss == null && !hasSpawnBoss) {
             frameCounter += 0.25f;
         }
         else if (frameCounter >= refreshTime && boss == null && !hasSpawnBoss)

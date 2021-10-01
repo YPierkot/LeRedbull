@@ -1,0 +1,732 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &304755805188963249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4233039791996523265}
+  - component: {fileID: 8383614911027465115}
+  - component: {fileID: 7650409676491774539}
+  - component: {fileID: 5067737300011983550}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4233039791996523265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304755805188963249}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.3600001, z: 0}
+  m_LocalScale: {x: 0.75000006, y: 3, z: 0.75000006}
+  m_Children: []
+  m_Father: {fileID: 8212594944672352729}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!33 &8383614911027465115
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304755805188963249}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &7650409676491774539
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304755805188963249}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a94083c50f414c242bf323a8d08b9bb2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &5067737300011983550
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304755805188963249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.50000024
+  m_Center: {x: 0, y: 0, z: -0.000003814699}
+--- !u!1 &1432647227114560866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2486330391971190199}
+  - component: {fileID: 4598955959486377049}
+  m_Layer: 0
+  m_Name: Path
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2486330391971190199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432647227114560866}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8212594945162804254}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4598955959486377049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432647227114560866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorData:
+    _bezierPath:
+      points:
+      - {x: 0, y: -0.00000047683716, z: 0}
+      - {x: 0, y: -0.00000047683716, z: 0}
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 0, z: 3.3492012}
+      - {x: 0, y: 0, z: 7}
+      isClosed: 0
+      space: 0
+      controlMode: 0
+      autoControlLength: 0.3
+      boundsUpToDate: 0
+      bounds:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+      perAnchorNormalsAngle:
+      - 0
+      - 0
+      - 0
+      globalNormalsAngle: 0
+      flipNormals: 0
+    vertexPathUpToDate: 1
+    vertexPathMaxAngleError: 0.3
+    vertexPathMinVertexSpacing: 0.01
+    showTransformTool: 1
+    showPathBounds: 0
+    showPerSegmentBounds: 0
+    displayAnchorPoints: 1
+    displayControlPoints: 1
+    bezierHandleScale: 1
+    globalDisplaySettingsFoldout: 0
+    keepConstantHandleSize: 1
+    showNormalsInVertexMode: 0
+    showBezierPathInVertexMode: 0
+    showDisplayOptions: 0
+    showPathOptions: 1
+    showVertexPathDisplayOptions: 0
+    showVertexPathOptions: 1
+    showNormals: 0
+    showNormalsHelpInfo: 0
+    tabIndex: 0
+  initialized: 1
+--- !u!1 &8212594944672352730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8212594944672352729}
+  - component: {fileID: 8212594944672352708}
+  - component: {fileID: 8212594944672352709}
+  - component: {fileID: 8212594944672352710}
+  - component: {fileID: 8212594944672352711}
+  - component: {fileID: 8212594944672352728}
+  - component: {fileID: 926746997463718754}
+  - component: {fileID: 6296434636413244081}
+  m_Layer: 0
+  m_Name: Boss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8212594944672352729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212594944672352730}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 0.5, z: 2}
+  m_Children:
+  - {fileID: 4233039791996523265}
+  m_Father: {fileID: 8212594945162804254}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8212594944672352708
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212594944672352730}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8212594944672352709
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212594944672352730}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 64d440b67a98fed4aa6477e8f80516b9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8212594944672352710
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212594944672352730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.54
+  m_Height: 7.51
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8212594944672352711
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212594944672352730}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8212594944672352728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212594944672352730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c192cc6f56752154b97d61111cb3b38c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canActivate: 1
+  refreshTime: 1500
+  ennemyPrefab: {fileID: 8212594944672352730}
+  actionClasses:
+  - name: AlwaysSpin
+    frames: 50
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 6
+      burstBullets: 6
+      burstAngle: 180
+      bulletNumber: 500
+      timeBetweenShoot: 1
+      burstRotation: 5
+      bulletSizeFactor: 0.2
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 8
+      bulletNumber: 20
+      timeBetweenShoot: 2
+  - name: ShockWave
+    frames: 1
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 12
+      burstBullets: 15
+      burstAngle: 180
+      bulletNumber: 6
+      timeBetweenShoot: 7
+      burstRotation: 0
+      bulletSizeFactor: 1.5
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 0
+      bulletNumber: 0
+      timeBetweenShoot: 0
+  - name: Spinning Clock
+    frames: 100
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 12
+      burstBullets: 2
+      burstAngle: 180
+      bulletNumber: 20
+      timeBetweenShoot: 0.5
+      burstRotation: 10
+      bulletSizeFactor: 1.2
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 0
+      bulletNumber: 0
+      timeBetweenShoot: 0
+  - name: Spinning Anti Clocl
+    frames: 100
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 12
+      burstBullets: 2
+      burstAngle: 180
+      bulletNumber: 20
+      timeBetweenShoot: 0.5
+      burstRotation: -10
+      bulletSizeFactor: 1.2
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 0
+      bulletNumber: 0
+      timeBetweenShoot: 0
+  - name: Corner Shoot
+    frames: 1000
+    actionsEnum: 2
+    fireBurst:
+      burstSpeed: 8
+      burstBullets: 4
+      burstAngle: 180
+      bulletNumber: 10
+      timeBetweenShoot: 1
+      burstRotation: -10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 10
+      bulletNumber: 20
+      timeBetweenShoot: 1
+  - name: QuickSpin Clock
+    frames: 1200
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 10
+      burstBullets: 2
+      burstAngle: 180
+      bulletNumber: 10
+      timeBetweenShoot: 0.5
+      burstRotation: 10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 8
+      bulletNumber: 20
+      timeBetweenShoot: 2
+  - name: QuickSpin Clock 2
+    frames: 1210
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 10
+      burstBullets: 2
+      burstAngle: 180
+      bulletNumber: 10
+      timeBetweenShoot: 0.5
+      burstRotation: 10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 8
+      bulletNumber: 20
+      timeBetweenShoot: 2
+  - name: 'QuickSpin Anticlock '
+    frames: 1200
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 10
+      burstBullets: 2
+      burstAngle: 180
+      bulletNumber: 10
+      timeBetweenShoot: 0.5
+      burstRotation: -10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 8
+      bulletNumber: 20
+      timeBetweenShoot: 2
+  - name: QuickSpin Anticlock 2
+    frames: 1210
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 10
+      burstBullets: 2
+      burstAngle: 180
+      bulletNumber: 10
+      timeBetweenShoot: 0.5
+      burstRotation: -10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 8
+      bulletNumber: 20
+      timeBetweenShoot: 2
+  - name: QuickSpin Anticlock 2
+    frames: 400
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 10
+      burstBullets: 2
+      burstAngle: 180
+      bulletNumber: 10
+      timeBetweenShoot: 0.5
+      burstRotation: -10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 8
+      bulletNumber: 20
+      timeBetweenShoot: 2
+  - name: QuickSpin Anticlock 2
+    frames: 410
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 10
+      burstBullets: 2
+      burstAngle: 180
+      bulletNumber: 10
+      timeBetweenShoot: 0.5
+      burstRotation: -10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 8
+      bulletNumber: 20
+      timeBetweenShoot: 2
+  - name: QuickSpin Anticlock 2
+    frames: 400
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 10
+      burstBullets: 2
+      burstAngle: 180
+      bulletNumber: 10
+      timeBetweenShoot: 0.5
+      burstRotation: 10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 8
+      bulletNumber: 20
+      timeBetweenShoot: 2
+  - name: QuickSpin Anticlock 2
+    frames: 410
+    actionsEnum: 0
+    fireBurst:
+      burstSpeed: 10
+      burstBullets: 2
+      burstAngle: 180
+      bulletNumber: 10
+      timeBetweenShoot: 0.5
+      burstRotation: 10
+      bulletSizeFactor: 0
+    randomFire:
+      bulletNumber: 0
+      AngleRandom: 0
+      positionRandom: 0
+      speedRandom: 0
+      bulletSpeed: 0
+      bulletSizeFactor: 0
+      kamikaze: 0
+    fireStraight:
+      ballSpeed: 0
+      bulletMissShoot: 0
+      orientationAngle: 0
+    fireCorner:
+      bulletSpeed: 8
+      bulletNumber: 20
+      timeBetweenShoot: 2
+--- !u!114 &926746997463718754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212594944672352730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5449c3d42023d48985f14a7558c879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 3500
+  parent: {fileID: 8212594945162804255}
+--- !u!114 &6296434636413244081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212594944672352730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33aabe1a2dec93349b06e6e5dc51bc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: {fileID: 0}
+  pathCreator: {fileID: 4598955959486377049}
+  endOfPathInstruction: 2
+  speed: 0.5
+  length: 0
+--- !u!1 &8212594945162804255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8212594945162804254}
+  m_Layer: 0
+  m_Name: SemiBoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8212594945162804254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212594945162804255}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 2.5, z: 13.8}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children:
+  - {fileID: 8212594944672352729}
+  - {fileID: 2486330391971190199}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
