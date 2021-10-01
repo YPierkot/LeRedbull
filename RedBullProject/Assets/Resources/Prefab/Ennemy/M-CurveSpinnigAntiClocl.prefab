@@ -151,6 +151,7 @@ MonoBehaviour:
       speedRandom: 0
       bulletSpeed: 0
       bulletSizeFactor: 0
+      kamikaze: 0
     fireStraight:
       ballSpeed: 0
       bulletMissShoot: 0
@@ -177,6 +178,7 @@ MonoBehaviour:
       speedRandom: 0
       bulletSpeed: 0
       bulletSizeFactor: 0
+      kamikaze: 0
     fireStraight:
       ballSpeed: 0
       bulletMissShoot: 0

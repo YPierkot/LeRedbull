@@ -168,6 +168,7 @@ MonoBehaviour:
       speedRandom: 0
       bulletSpeed: 0
       bulletSizeFactor: 0
+      kamikaze: 0
     fireStraight:
       ballSpeed: 20
       bulletMissShoot: 0
