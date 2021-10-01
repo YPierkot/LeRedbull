@@ -343,7 +343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &108795460
 GameObject:
@@ -606,7 +606,7 @@ RectTransform:
   m_Children:
   - {fileID: 539069265}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1282,6 +1282,10 @@ PrefabInstance:
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: isActivAtStart
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
+      propertyPath: contractEnnemyToKill
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821033468701, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2718,7 +2722,7 @@ RectTransform:
   m_Children:
   - {fileID: 286568136}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2820,7 +2824,7 @@ RectTransform:
   m_Children:
   - {fileID: 1714836632}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3320,6 +3324,10 @@ PrefabInstance:
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: isActivAtStart
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
+      propertyPath: contractEnnemyToKill
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821033468701, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4532,6 +4540,13 @@ MonoBehaviour:
   centerSpawn: {fileID: 39372704}
   rightSpawn: {fileID: 676608793}
   enemySlots:
+  - name: WaitBegin
+    frame: 1
+    prefab: {fileID: 0}
+    spawnPoint: 0
+    timeBeforeDestroy: 0
+    flip: 0
+    isBoss: 1
   - name: LeftSimpleStraightDescending
     frame: 200
     prefab: {fileID: 8159513848930354238, guid: 91f2f41a7caa63342b9486575b22c315, type: 3}
@@ -4596,28 +4611,28 @@ MonoBehaviour:
     flip: 0
     isBoss: 0
   - name: RandomBurst
-    frame: 1050
+    frame: 1250
     prefab: {fileID: 494451078176031886, guid: 58a9baba133591b4d8b9d08e950bb889, type: 3}
     spawnPoint: 3
     timeBeforeDestroy: 11
     flip: 0
     isBoss: 0
   - name: RandomBurst
-    frame: 1100
+    frame: 1300
     prefab: {fileID: 494451078176031886, guid: 58a9baba133591b4d8b9d08e950bb889, type: 3}
     spawnPoint: 1
     timeBeforeDestroy: 11
     flip: 1
     isBoss: 0
   - name: RandomBurst
-    frame: 1150
+    frame: 1350
     prefab: {fileID: 494451078176031886, guid: 58a9baba133591b4d8b9d08e950bb889, type: 3}
     spawnPoint: 3
     timeBeforeDestroy: 11
     flip: 0
     isBoss: 0
   - name: RandomBurst
-    frame: 1200
+    frame: 1400
     prefab: {fileID: 494451078176031886, guid: 58a9baba133591b4d8b9d08e950bb889, type: 3}
     spawnPoint: 1
     timeBeforeDestroy: 11
@@ -4626,6 +4641,13 @@ MonoBehaviour:
   - name: FirstBoss
     frame: 1800
     prefab: {fileID: 6486403610003472092, guid: 9da19bfa8852bad498fe72471cffb420, type: 3}
+    spawnPoint: 0
+    timeBeforeDestroy: 5000
+    flip: 0
+    isBoss: 1
+  - name: SizeDoesMatter
+    frame: 2000
+    prefab: {fileID: 2876666603700247038, guid: b3be28defc4f7c14da9484ab27224e5e, type: 3}
     spawnPoint: 0
     timeBeforeDestroy: 5000
     flip: 0
@@ -4831,6 +4853,10 @@ PrefabInstance:
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: isActivAtStart
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
+      propertyPath: contractEnnemyToKill
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821033468701, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6191,7 +6217,7 @@ Transform:
   - {fileID: 1506431442}
   - {fileID: 518770901}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &777670250
 Rigidbody:
@@ -6628,88 +6654,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &945806234
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 945806238}
-  - component: {fileID: 945806237}
-  - component: {fileID: 945806236}
-  m_Layer: 0
-  m_Name: Ground
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!23 &945806236
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945806234}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 2b93a3af29936634c8b76cdd34a93b7d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &945806237
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945806234}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &945806238
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945806234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.4, y: -1.35, z: 17.8213}
-  m_LocalScale: {x: 91, y: 1, z: 59}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &946623971
 GameObject:
@@ -7032,6 +6977,10 @@ PrefabInstance:
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: isActivAtStart
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
+      propertyPath: contractEnnemyToKill
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821033468701, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8154,7 +8103,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089950225
 GameObject:
@@ -8419,7 +8368,7 @@ RectTransform:
   - {fileID: 1540371785}
   - {fileID: 574159488}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8669,7 +8618,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1208473742 stripped
 MonoBehaviour:
@@ -9339,7 +9288,7 @@ RectTransform:
   - {fileID: 2061005741}
   - {fileID: 771970666}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9532,6 +9481,10 @@ PrefabInstance:
     - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: isActivAtStart
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
+      propertyPath: contractEnnemyToKill
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4241008821033468701, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10665,7 +10618,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ed163547f1da77428f4f5705bab35da, type: 2}
+  - {fileID: 2100000, guid: 13b158a6f2b31a743833b2fc70cb0c34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10707,7 +10660,7 @@ Transform:
   m_LocalScale: {x: 66.668915, y: 1, z: 51.653847}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1481079271 stripped
 MonoBehaviour:
@@ -10854,7 +10807,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1577346499
 MonoBehaviour:
@@ -11967,7 +11920,7 @@ Transform:
   - {fileID: 652811299}
   - {fileID: 890425168}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1867564733
 GameObject:
@@ -12141,7 +12094,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1923841041
 GameObject:
@@ -12172,7 +12125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1923841043
 MonoBehaviour:
@@ -12187,6 +12140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerGam: {fileID: 777670245}
+  lifeSlider: {fileID: 581202918}
   shootPos: {fileID: 1506431442}
   life: 0
   maxLife: 10
@@ -17596,6 +17550,10 @@ PrefabInstance:
       propertyPath: objectSprite
       value: 
       objectReference: {fileID: 21300000, guid: b6c2be4901ba57a4a8c90fc3eb07ecac, type: 3}
+    - target: {fileID: 4241008821030379595, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
+      propertyPath: contractEnnemyToKill
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4241008821033468701, guid: f48e4f400947cb148aec896307d65fa5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

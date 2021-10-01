@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour {
     #region Variables
     [Header("Player Infos")] 
     [SerializeField] private GameObject playerGam = null;
+    [SerializeField] private Image lifeSlider = null;
     [SerializeField] private Transform shootPos = null;
     [SerializeField] private int life = 0;
     [SerializeField] private int maxLife = 0;
@@ -54,6 +55,7 @@ public class PlayerManager : MonoBehaviour {
     private void Start() {
         life = maxLife; 
         playerRig = playerGam.GetComponent<Rigidbody>();
+        UpdateSlider();
     }
 
     private void Update() {
@@ -140,6 +142,14 @@ public class PlayerManager : MonoBehaviour {
     public void TakeDamage(int damagePerBullet) {
         life -= damagePerBullet;
         takeDamageAnim.Play("TakeDamage");
+        UpdateSlider();
+    }
+
+    /// <summary>
+    /// UPdate slider value
+    /// </summary>
+    private void UpdateSlider() {
+        lifeSlider.fillAmount = (float)life / maxLife;
     }
     #endregion Life
 
