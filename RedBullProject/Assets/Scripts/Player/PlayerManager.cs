@@ -86,6 +86,32 @@ public class PlayerManager : MonoBehaviour {
         }
 
         //Pause
+        Pause();
+        
+        //Slow Motion
+        if (Input.GetMouseButton(1) && hasReachEnd == false) {
+            UseSlowMotion(true);
+            if (!hasStartSlowMotion) {
+                Instantiate(slowMotionEffect);
+                hasStartSlowMotion = true;
+            }
+        }
+        else {
+            if(pause != true) UseSlowMotion(false);
+        }
+
+        if (Input.GetMouseButtonUp(1)) {
+            hasStartSlowMotion = false;
+            if (!hasReachEnd) {
+                Instantiate(fastMotionEffect);
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Pause or UnPause 
+    /// </summary>
+    private void Pause() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (!pause) {
                 cameraAnim.Play("MoveCameraForGameplay");
@@ -118,28 +144,8 @@ public class PlayerManager : MonoBehaviour {
                 pause = false;
             }
         }
-        
-        
-        //Slow Motion
-        if (Input.GetMouseButton(1) && hasReachEnd == false) {
-            UseSlowMotion(true);
-            if (!hasStartSlowMotion) {
-                Instantiate(slowMotionEffect);
-                hasStartSlowMotion = true;
-            }
-        }
-        else {
-            if(pause != true) UseSlowMotion(false);
-        }
-
-        if (Input.GetMouseButtonUp(1)) {
-            hasStartSlowMotion = false;
-            if (!hasReachEnd) {
-                Instantiate(fastMotionEffect);
-            }
-        }
     }
-
+    
     /// <summary>
     /// Move the rigidbody
     /// </summary>
