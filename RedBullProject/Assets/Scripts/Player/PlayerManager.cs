@@ -14,7 +14,8 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private Transform shootPos = null;
     [SerializeField] private int life = 0;
     [SerializeField] private int maxLife = 0;
-
+    [SerializeField] private Animator takeDamageAnim = null;
+    
     [Header("Player Movement")] 
     [SerializeField] private float moveSpeed = 0;
 
@@ -28,6 +29,9 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private float slowMotionLength = 0f;
     [SerializeField] private float slowMotionForce = 0f;
     [SerializeField] private Color slowMotionColorWhenUsed = new Color();
+    [SerializeField] private GameObject slowMotionEffect = null;
+    [SerializeField] private GameObject fastMotionEffect = null;
+    [SerializeField] private bool hasStartSlowMotion = false;
 
     #region privateVariable
     //Rigidbody
@@ -63,9 +67,18 @@ public class PlayerManager : MonoBehaviour {
         //Slow Motion
         if (Input.GetMouseButton(1) && hasReachEnd == false) {
             UseSlowMotion(true);
+            if (!hasStartSlowMotion) {
+                Instantiate(slowMotionEffect);
+                hasStartSlowMotion = true;
+            }
         }
         else {
-            UseSlowMotion(false);    
+            UseSlowMotion(false);
+        }
+
+        if (Input.GetMouseButtonUp(1)) {
+            hasStartSlowMotion = false;
+            if(!hasReachEnd) Instantiate(fastMotionEffect);
         }
     }
 
@@ -126,13 +139,13 @@ public class PlayerManager : MonoBehaviour {
     /// <param name="damagePerBullet"></param>
     public void TakeDamage(int damagePerBullet) {
         life -= damagePerBullet;
+        takeDamageAnim.Play("TakeDamage");
     }
     #endregion Life
 
     #region SlowMotion
 
-    private void UseSlowMotion(bool useSlowMotion)
-    {
+    private void UseSlowMotion(bool useSlowMotion) {
         switch (useSlowMotion) {
             case true:
                 Time.timeScale = Mathf.Lerp(Time.timeScale, slowMotionValue, Time.deltaTime * slowMotionForce);
@@ -140,6 +153,7 @@ public class PlayerManager : MonoBehaviour {
                 if (slowMotionSlider.fillAmount <= .001f) {
                     hasReachEnd = true;
                     slowMotionImg.color = slowMotionColorWhenUsed;
+                    Instantiate(fastMotionEffect);
                 }
                 break;
             case false:
@@ -147,6 +161,7 @@ public class PlayerManager : MonoBehaviour {
                 slowMotionSlider.fillAmount = Mathf.Clamp(slowMotionSlider.fillAmount + ((Time.deltaTime / slowMotionLength) * 1 / Time.timeScale), 0 , 1);
                 if (slowMotionSlider.fillAmount >= .99f) {
                     hasReachEnd = false;
+                    hasStartSlowMotion = false;
                     slowMotionImg.color = Color.white;
                 }
                 break;

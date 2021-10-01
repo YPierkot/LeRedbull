@@ -19,10 +19,27 @@ public class EnemyTimeline : MonoBehaviour
     
     public List<EnemySlot> enemySlots = new List<EnemySlot>();
 
+    [SerializeField] private Animator alertCanvas = null;
+    private bool hasSpawnAlert = false;
+
+    private void Start() {
+        alertCanvas.gameObject.GetComponent<CanvasGroup>().alpha = 0;
+    }
+
+    IEnumerator waitForAlert() {
+        hasSpawnAlert = true;
+        yield return new WaitForSeconds(1.5f);
+        alertCanvas.Play("GetCanvasAlpha");
+    }
     
-    private void FixedUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) && hasSpawnBoss) hasSpawnBoss = false;
+    private void FixedUpdate() {
+        if (Input.GetKeyDown(KeyCode.Return) && hasSpawnBoss && boss == null) {
+            alertCanvas.Play("changeCanvasAlpha");
+            hasSpawnBoss = false;
+            hasSpawnAlert = false;
+        }
+
+        if (hasSpawnBoss && boss == null && !hasSpawnAlert) StartCoroutine(waitForAlert());  
         
         if (frameCounter < refreshTime && boss == null && !hasSpawnBoss)
         {
