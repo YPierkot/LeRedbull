@@ -6,8 +6,8 @@ using UnityEngine;
 public class BulletPoolBehavior : MonoBehaviour {
     public string bulletName; 
     public int waitForDestruction;
-    [SerializeField] private int damage = 0;
-    public int Damage => damage;
+    [SerializeField] private float damage = 0;
+    public float Damage => damage;
 
     private void OnEnable() {
         if(waitForDestruction > 0) StartCoroutine(DestroyPooledObject());
@@ -17,7 +17,7 @@ public class BulletPoolBehavior : MonoBehaviour {
     /// Initialize damage for this bullet
     /// </summary>
     /// <param name="dam"></param>
-    public void Init(int dam) {
+    public void Init(float dam) {
         damage = dam;
     }
     

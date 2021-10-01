@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class Weapons : MonoBehaviour
 {
     public bool canActivate;
-    private int frameCounter;
+    private float frameCounter;
     public float refreshTime;
 
 
@@ -22,7 +22,7 @@ public class Weapons : MonoBehaviour
         {
             if (frameCounter < refreshTime)
             {
-                frameCounter++;
+                frameCounter += 0.25f;
             }
             else
             { 
