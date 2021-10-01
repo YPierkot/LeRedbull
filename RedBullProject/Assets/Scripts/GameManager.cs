@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     public GameObject DamageText => damageText;
     [SerializeField] private GameObject damageEffect = null;
     public GameObject DamageEffect => damageEffect;
+    [SerializeField] private GameObject deathEffect = null;
+    public GameObject DeathEffect => deathEffect;
 
     private void Start() {
         ChangeContractState(true);
@@ -157,7 +159,7 @@ public class GameManager : MonoBehaviour
         int random = Random.Range(0, 100);
         if (randomValue >= random) {
             basicRessourceNumber += 1;
-            UpdateRessourceValue();
+            UpdateRessourceValue(); 
         }
     }
     

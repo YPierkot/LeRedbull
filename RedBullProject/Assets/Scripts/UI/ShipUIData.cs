@@ -27,10 +27,11 @@ public class ShipUIData : MonoBehaviour
 
     [Space]
     [SerializeField] private GameObject ressourceGam = null;
+    [SerializeField] private GameObject openStatButton = null;
     [SerializeField] private List<Transform> upgradeRessContainer = new List<Transform>();
     [SerializeField] private List<Button> addRessourceBtn = new List<Button>();
     [SerializeField] private List<TextMeshProUGUI> upgradeText = new List<TextMeshProUGUI>();
-
+    [SerializeField] private Animator cameraAnim;
     #endregion Variables
 
     private void Start() {
@@ -46,14 +47,39 @@ public class ShipUIData : MonoBehaviour
     /// <summary>
     /// Open or Close the upgradePanel
     /// </summary>
-    public void ChangePanelStatState(bool forceOpen) {
-        if (!forceOpen) {
-            foreach (WeaponUiData weapon in GameManager.Instance.ContractGamList) {
-                if (weapon.StatPanel.activeSelf && weapon.StatPanel != statPanel) weapon.ChangePanelStatState(true);
+    public void ChangePanelStatState() {
+        bool wasOpen = false;
+        foreach (WeaponUiData weapon in GameManager.Instance.ContractGamList) {
+            if (weapon.StatPanel.activeSelf) {
+                weapon.ClosePanel();
+                wasOpen = true;
             }
         }
+        
+        switch (wasOpen) {
+            case true when statPanel.activeSelf:
+            case false when statPanel.activeSelf:
+                cameraAnim.Play("MoveCameraForGameplay");
+                ClosePanel();
+                break;
+            case true when !statPanel.activeSelf:
+                OpenPanel();
+                break;
+            case false when !statPanel.activeSelf:
+                cameraAnim.Play("MoveCameraForUI");
+                OpenPanel();
+                break;
+        }
+    }
 
-        StatPanel.SetActive(!StatPanel.activeSelf);
+    public void ClosePanel() {
+        StatPanel.SetActive(false);
+        openStatButton.gameObject.transform.localRotation = Quaternion.Euler(0, -180, 180);
+    }
+
+    private void OpenPanel() {
+        StatPanel.SetActive(true);
+        openStatButton.gameObject.transform.localRotation = Quaternion.Euler(0, -180, 0);
     }
 
     #region Resource
